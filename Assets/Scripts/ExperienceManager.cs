@@ -137,6 +137,9 @@ public class ExperienceManager : MonoBehaviour
         createdObject = objectCreated;
         // Show colour picker
         colourPicker.ToggleColourPicker(true);
+        // Notify VibrationControl about the new spawned object
+        FindObjectOfType<BuzzControl>().SetBuzzObject(objectCreated);
+
     }
 
     private void OnDestroy()

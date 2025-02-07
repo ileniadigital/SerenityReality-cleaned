@@ -145,5 +145,8 @@ public class ColourPickerControl : MonoBehaviour
 
         // Hide the colour picker UI
         ToggleColourPicker(false);
+
+        // Show vibration UI after selecting color
+        FindObjectOfType<BuzzControl>().ShowBuzzUI();
     }
 }
