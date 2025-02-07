@@ -136,6 +136,8 @@ public class ColourPickerControl : MonoBehaviour
             targetRenderer = experienceManager.createdObject.GetComponent<MeshRenderer>();
             if (targetRenderer != null)
             {
+                //Material newMaterial = new Material(targetRenderer.material);
+                //targetRenderer.material = newMaterial;
                 // Apply the final color permanently
                 targetRenderer.material.color = Color.HSVToRGB(currentH, currentS, currentV);
             }

@@ -10205,7 +10205,7 @@ MonoBehaviour:
   sImage: {fileID: 1428811597}
   previewImage: {fileID: 1132707730}
   slider: {fileID: 1148791321}
-  confirmButton: {fileID: 0}
+  confirmButton: {fileID: 678559213}
   changeColour: {fileID: 0}
 --- !u!1 &2086985258
 GameObject:

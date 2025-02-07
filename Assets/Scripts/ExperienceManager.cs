@@ -33,8 +33,6 @@ public class ExperienceManager : MonoBehaviour
         confirmButton.gameObject.SetActive(true);
         shapeMenu.gameObject.SetActive(true);
 
-        //aRPlaneManager.planesChanged += OnPlanesChanged;
-
         // Attach the SpawnObject function to the Add button's onClick event
         if (addButton != null)
         {
@@ -47,7 +45,7 @@ public class ExperienceManager : MonoBehaviour
         }
 
         //Instantiate the preview objectPrefab and allow placement
-        //ChangeSelectedObject(0);
+        //ChangeSelecte÷dObject(0);
     }
 
 
@@ -152,19 +150,6 @@ public class ExperienceManager : MonoBehaviour
     public void SetCanAddObject(bool canAddObject)
     {
         _canAddObject = canAddObject;
-
-        // Enable or disable the Add button depending on whether we can add objects
-        //if (addButton != null)
-        //{
-        //    addButton.gameObject.SetActive(_canAddObject);
-        //    addButton.interactable = _canAddObject;
-        //}
-
-        //// Show or hide the preview object depending on whether we can add objects
-        //if (_objectPrefabPreview != null)
-        //{
-        //    _objectPrefabPreview.SetActive(_canAddObject);
-        //}
     }
 
     private void DisablePlaneVisualisation()
