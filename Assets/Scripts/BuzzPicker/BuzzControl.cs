@@ -8,6 +8,7 @@ public class BuzzControl : MonoBehaviour
     [SerializeField] private TextMeshProUGUI speedText;
     [SerializeField] private Button confirmButton;
     [SerializeField] private GameObject buzzUI;
+    [SerializeField] private BreathingExercise breathingExercise;
 
     private Buzz buzzObject;
 
@@ -48,6 +49,9 @@ public class BuzzControl : MonoBehaviour
         }
 
         buzzUI.SetActive(false);
+
+        // Start breathing exercise
+        breathingExercise.StartBreathing();
     }
 
     public void ShowBuzzUI()

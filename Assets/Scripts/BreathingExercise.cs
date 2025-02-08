@@ -1,48 +1,76 @@
 using System.Collections;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 
 public class BreathingExercise : MonoBehaviour
 {
     [SerializeField] private Image breathingCircle;
+    [SerializeField] private TextMeshProUGUI breathText; // Text inside the circle
     [SerializeField] private float inhaleTime = 5f;
     [SerializeField] private float holdTime = 5f;
     [SerializeField] private float exhaleTime = 5f;
-    [SerializeField] private Vector3 minScale = new Vector3(5f, 5f, 5f);
-    [SerializeField] private Vector3 maxScale = new Vector3(100f, 100f, 100f);
+    [SerializeField] private Vector3 minScale = new Vector3(1f, 1f, 1f);
+    [SerializeField] private Vector3 maxScale = new Vector3(3f, 3f, 3f);
 
+    private bool breathingStarted = false;
     private void Start()
     {
-        StartCoroutine(BreathingRoutine());
+        breathingCircle.gameObject.SetActive(false);
+        breathText.gameObject.SetActive(false);
+    }
+
+    public void StartBreathing()
+    {
+        if (!breathingStarted) {
+            breathingStarted = true;
+            breathingCircle.gameObject.SetActive(true);
+            breathText.gameObject.SetActive(true);
+
+            // Start animation
+            StartCoroutine(BreathingRoutine());
+        }
     }
 
     private IEnumerator BreathingRoutine()
     {
         for (int i=0; i<3; i++)
         {
-            // Inhale (Grow)
-            yield return ScaleOverTime(breathingCircle.transform, minScale, maxScale, inhaleTime);
+            // Inhale first 
+            yield return UpdateBreathPhase("Inhale", minScale, maxScale, inhaleTime);
 
             // Hold
-            yield return new WaitForSeconds(holdTime);
+            yield return UpdateBreathPhase("Hold", maxScale, maxScale, holdTime);
 
-            // Exhale (Shrink)
-            yield return ScaleOverTime(breathingCircle.transform, maxScale, minScale, exhaleTime);
+            // Exhale
+            yield return UpdateBreathPhase("Exhale", maxScale, minScale, exhaleTime);
 
-            // Hold once more
-            yield return new WaitForSeconds(holdTime);
+            // Hold
+            yield return UpdateBreathPhase("Hold", minScale, minScale, holdTime);
         }
+
+        breathingCircle.gameObject.SetActive(false);
+        breathText.gameObject.SetActive(false);
     }
 
-    private IEnumerator ScaleOverTime(Transform target, Vector3 startScale, Vector3 endScale, float duration)
+    private IEnumerator UpdateBreathPhase(string phase, Vector3 startScale, Vector3 endScale, float duration)
     {
         float elapsedTime = 0f;
         while (elapsedTime < duration)
         {
-            target.localScale = Vector3.Lerp(startScale, endScale, elapsedTime / duration);
+            // Update text inside the circle
+            int timeLeft = Mathf.CeilToInt(duration - elapsedTime);
+            breathText.text = $"{phase}\n{timeLeft}";
+
+            // Animate the circle size
+            breathingCircle.rectTransform.localScale = Vector3.Lerp(startScale, endScale, elapsedTime / duration);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        target.localScale = endScale;
+
+        // Ensure final values match exactly
+        breathText.text = $"{phase}\n1";
+        breathingCircle.rectTransform.localScale = endScale;
+        yield return new WaitForSeconds(1f);
     }
 }
