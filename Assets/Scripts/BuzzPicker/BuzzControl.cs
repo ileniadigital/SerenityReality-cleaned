@@ -93,8 +93,6 @@ public class BuzzControl : MonoBehaviour
     private IEnumerator StartBreathingExercise()
     {
         yield return new WaitForSeconds(1f);
-        FindObjectOfType<InstructionText>().HideBreathingInstruction();
-        yield return new WaitForSeconds(1f);
         breathingExercise.StartBreathing();
         yield return new WaitForSeconds(67f);
         isSecondBuzz = true;

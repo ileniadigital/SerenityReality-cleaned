@@ -58,8 +58,4 @@ public class InstructionText : MonoBehaviour
         instructionText.text = "Take 3 deep breaths";
     }
 
-    public void HideBreathingInstruction()
-    {
-        instructionText.text = "";
-    }
 }
