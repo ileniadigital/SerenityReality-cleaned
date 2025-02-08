@@ -24,10 +24,4 @@ public class Buzz : MonoBehaviour
         buzzSpeed = speed;
         isBuzz = speed > 0;
     }
-
-    public void StopBuzz()
-    {
-        isBuzz = false;
-        transform.position = originalPosition; // Reset to original position
-    }
 }

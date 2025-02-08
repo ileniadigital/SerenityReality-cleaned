@@ -36,10 +36,10 @@ public class InstructionText : MonoBehaviour
     void Update()
     {
         // If the Buzz menu is active, update instruction text
-        if (buzzControl != null && buzzControl.buzzUI.activeSelf)
-        {
-            instructionText.text = "How fast does your anxiety move?";
-        }
+        //if (buzzControl != null && buzzControl.buzzUI.activeSelf)
+        //{
+        //    instructionText.text = "How fast does your anxiety move?";
+        //}
         // If the Colour Picker is active, update the instruction
         if (colourPicker != null && colourPicker.gameObject.activeSelf)
         {

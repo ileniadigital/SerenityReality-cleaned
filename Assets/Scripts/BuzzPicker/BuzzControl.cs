@@ -7,11 +7,14 @@ public class BuzzControl : MonoBehaviour
 {
     [SerializeField] private Slider buzzSpeedSlider;
     [SerializeField] private TextMeshProUGUI speedText;
+    [SerializeField] private InstructionText instructionText;
     [SerializeField] private Button confirmButton;
     [SerializeField] public GameObject buzzUI;
     [SerializeField] private BreathingExercise breathingExercise;
 
     private Buzz buzzObject;
+    private Buzz buzz;
+    private bool isSecondBuzz = false;
 
     private Buzz Buzz; // This will be assigned dynamically
 
@@ -19,6 +22,10 @@ public class BuzzControl : MonoBehaviour
     {
         buzzUI.SetActive(false);
 
+        if (instructionText == null)
+        {
+            instructionText = FindObjectOfType<InstructionText>();
+        }
         buzzSpeedSlider.onValueChanged.AddListener(UpdateBuzzSpeed);
         confirmButton.onClick.AddListener(ConfirmBuzz);
     }
@@ -44,21 +51,43 @@ public class BuzzControl : MonoBehaviour
 
     private void ConfirmBuzz()
     {
-        //if (Buzz != null)
-        //{
-        //    Buzz.StopBuzz();
-        //}
-
         buzzUI.SetActive(false);
 
-        // Start breathing exercise
-        FindObjectOfType<InstructionText>().ShowBreathingInstruction();
-        StartCoroutine(StartBreathingExercise());
+        if (!isSecondBuzz)
+        {
+            // First time confirming: Start breathing exercise
+            if (instructionText != null)
+            {
+                instructionText.ShowBreathingInstruction();
+            }
+
+            StartCoroutine(StartBreathingExercise());
+        }
+        else
+        {
+            // Second time confirming: No more breathing instructions, just close UI
+            if (instructionText != null)
+            {
+                instructionText.instructionText.text = "";
+            }
+        }
     }
+
 
     public void ShowBuzzUI()
     {
         buzzUI.SetActive(true);
+        if (instructionText != null)
+        {
+            if (!isSecondBuzz)
+            {
+                instructionText.instructionText.text = "How fast does your anxiety move?";
+            }
+            else
+            {
+                instructionText.instructionText.text = "Slow down your anxiety as you breathe.";
+            }
+        }
     }
 
     private IEnumerator StartBreathingExercise()
@@ -67,5 +96,8 @@ public class BuzzControl : MonoBehaviour
         FindObjectOfType<InstructionText>().HideBreathingInstruction();
         yield return new WaitForSeconds(1f);
         breathingExercise.StartBreathing();
+        yield return new WaitForSeconds(67f);
+        isSecondBuzz = true;
+        ShowBuzzUI();
     }
 }

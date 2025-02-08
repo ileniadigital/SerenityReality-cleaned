@@ -14,6 +14,7 @@ public class BreathingExercise : MonoBehaviour
     [SerializeField] private Vector3 maxScale = new Vector3(3f, 3f, 3f);
 
     private bool breathingStarted = false;
+    private bool isSecondRound = false;
     private void Start()
     {
         breathingCircle.gameObject.SetActive(false);
@@ -22,7 +23,7 @@ public class BreathingExercise : MonoBehaviour
 
     public void StartBreathing()
     {
-        if (!breathingStarted) {
+        if (!breathingStarted ||isSecondRound) {
             breathingStarted = true;
             breathingCircle.gameObject.SetActive(true);
             breathText.gameObject.SetActive(true);
@@ -34,23 +35,30 @@ public class BreathingExercise : MonoBehaviour
 
     private IEnumerator BreathingRoutine()
     {
-        for (int i=0; i<3; i++)
+        for (int i=0; i<2; i++)
         {
-            // Inhale first 
-            yield return UpdateBreathPhase("Inhale", minScale, maxScale, inhaleTime);
-
-            // Hold
-            yield return UpdateBreathPhase("Hold", maxScale, maxScale, holdTime);
-
-            // Exhale
-            yield return UpdateBreathPhase("Exhale", maxScale, minScale, exhaleTime);
-
+            yield return StartCoroutine(BreathingCyle());
             // Hold
             yield return UpdateBreathPhase("Hold", minScale, minScale, holdTime);
         }
+        // Separate cycle so it does not hold at the end after the last exhale
+        yield return StartCoroutine(BreathingCyle());
 
         breathingCircle.gameObject.SetActive(false);
         breathText.gameObject.SetActive(false);
+
+        isSecondRound = true;
+    }
+
+    private IEnumerator BreathingCyle()
+    {
+        yield return UpdateBreathPhase("Inhale", minScale, maxScale, inhaleTime);
+
+        // Hold
+        yield return UpdateBreathPhase("Hold", maxScale, maxScale, holdTime);
+
+        // Exhale
+        yield return UpdateBreathPhase("Exhale", maxScale, minScale, exhaleTime);
     }
 
     private IEnumerator UpdateBreathPhase(string phase, Vector3 startScale, Vector3 endScale, float duration)
