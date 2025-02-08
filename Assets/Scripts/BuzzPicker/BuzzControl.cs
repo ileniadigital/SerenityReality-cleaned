@@ -1,13 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class BuzzControl : MonoBehaviour
 {
     [SerializeField] private Slider buzzSpeedSlider;
     [SerializeField] private TextMeshProUGUI speedText;
     [SerializeField] private Button confirmButton;
-    [SerializeField] private GameObject buzzUI;
+    [SerializeField] public GameObject buzzUI;
     [SerializeField] private BreathingExercise breathingExercise;
 
     private Buzz buzzObject;
@@ -51,11 +52,20 @@ public class BuzzControl : MonoBehaviour
         buzzUI.SetActive(false);
 
         // Start breathing exercise
-        breathingExercise.StartBreathing();
+        FindObjectOfType<InstructionText>().ShowBreathingInstruction();
+        StartCoroutine(StartBreathingExercise());
     }
 
     public void ShowBuzzUI()
     {
         buzzUI.SetActive(true);
+    }
+
+    private IEnumerator StartBreathingExercise()
+    {
+        yield return new WaitForSeconds(1f);
+        FindObjectOfType<InstructionText>().HideBreathingInstruction();
+        yield return new WaitForSeconds(1f);
+        breathingExercise.StartBreathing();
     }
 }

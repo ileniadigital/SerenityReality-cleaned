@@ -43,9 +43,6 @@ public class ExperienceManager : MonoBehaviour
         {
             confirmButton.onClick.AddListener(ConfirmShapeSelection);
         }
-
-        //Instantiate the preview objectPrefab and allow placement
-        //ChangeSelecte÷dObject(0);
     }
 
 
