@@ -10,7 +10,6 @@ public class InstructionText : MonoBehaviour
     public TextMeshProUGUI instructionText;
     private ARPlaneManager planeManager;
     private bool objectPreviewLoaded = false;
-    private bool breathingStarted = false;
     [SerializeField] private ColourPickerControl colourPicker;
     [SerializeField] private BuzzControl buzzControl;
 

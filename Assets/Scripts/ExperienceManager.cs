@@ -30,8 +30,10 @@ public class ExperienceManager : MonoBehaviour
         // Hide all elements initially
         colourPicker.ToggleColourPicker(false);
         addButton.gameObject.SetActive(false);
-        confirmButton.gameObject.SetActive(true);
-        shapeMenu.gameObject.SetActive(true);
+        confirmButton.gameObject.SetActive(false);
+        shapeMenu.gameObject.SetActive(false);
+
+        StartCoroutine(ShowShapeMenuWithDelay(5f));
 
         // Attach the SpawnObject function to the Add button's onClick event
         if (addButton != null)
@@ -44,7 +46,6 @@ public class ExperienceManager : MonoBehaviour
             confirmButton.onClick.AddListener(ConfirmShapeSelection);
         }
     }
-
 
     private void Update()
     {
@@ -70,6 +71,13 @@ public class ExperienceManager : MonoBehaviour
                 _objectPrefabPreview.transform.rotation = _detectedRotation;
             }
         }
+    }
+
+    private IEnumerator ShowShapeMenuWithDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        shapeMenu.gameObject.SetActive(true); 
+        confirmButton.gameObject.SetActive(true);
     }
 
     public void ChangeSelectedObject(int index)

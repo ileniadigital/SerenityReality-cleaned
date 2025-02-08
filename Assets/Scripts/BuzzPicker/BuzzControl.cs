@@ -44,10 +44,10 @@ public class BuzzControl : MonoBehaviour
 
     private void ConfirmBuzz()
     {
-        if (Buzz != null)
-        {
-            Buzz.StopBuzz();
-        }
+        //if (Buzz != null)
+        //{
+        //    Buzz.StopBuzz();
+        //}
 
         buzzUI.SetActive(false);
 
