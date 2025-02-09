@@ -11,6 +11,7 @@ public class BuzzControl : MonoBehaviour
     [SerializeField] private Button confirmButton;
     [SerializeField] public GameObject buzzUI;
     [SerializeField] private BreathingExercise breathingExercise;
+    //[SerializeField] private PinchToResize pinchToResize;
 
     private Buzz buzzObject;
     private Buzz buzz;
@@ -30,7 +31,6 @@ public class BuzzControl : MonoBehaviour
         confirmButton.onClick.AddListener(ConfirmBuzz);
     }
 
-    // Dynamically assign the object that should vibrate
     public void SetBuzzObject(GameObject newObject)
     {
         Buzz = newObject.GetComponent<Buzz>();
@@ -70,6 +70,9 @@ public class BuzzControl : MonoBehaviour
             {
                 instructionText.instructionText.text = "";
             }
+
+            //// Enable pinching
+            //pinchToResize.canPinchResize = true;
         }
     }
 

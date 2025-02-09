@@ -31,9 +31,9 @@ public class ExperienceManager : MonoBehaviour
         colourPicker.ToggleColourPicker(false);
         addButton.gameObject.SetActive(false);
         confirmButton.gameObject.SetActive(false);
-        shapeMenu.gameObject.SetActive(false);
+        shapeMenu.gameObject.SetActive(true);
 
-        StartCoroutine(ShowShapeMenuWithDelay(5f));
+        StartCoroutine(ShowShapeMenuWithDelay(3f));
 
         // Attach the SpawnObject function to the Add button's onClick event
         if (addButton != null)
@@ -76,7 +76,6 @@ public class ExperienceManager : MonoBehaviour
     private IEnumerator ShowShapeMenuWithDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        shapeMenu.gameObject.SetActive(true); 
         confirmButton.gameObject.SetActive(true);
     }
 
