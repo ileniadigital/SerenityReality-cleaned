@@ -4,13 +4,14 @@
 - Loading shape and choosing it
 - Choosing colour
 - Choosing speed of movement
-- [TO DO] Breathing exercise (5-5-5)
-- [TO DO] Slowing it down
-- [TO DO] Changel colour
-- [TO DO] Pinching it until it disappears
-
+- Breathing exercise (5-5-5)
+- Slowing it down
 
 # Sea wave meditation
+- Scan floors
+- [TO DO] Load sea
+- [TO DO] Breathing exercise (4-7-8)
+- [TO DO] Ad button for user to stop
 
 
 # Front-end of app
