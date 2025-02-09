@@ -4,7 +4,7 @@ public class OceanFollowXR : MonoBehaviour
 {
     public Transform xrCamera;  // Drag XR Camera here
     public float distanceFromCamera = 1.5f;  // Distance forward
-    public float heightOffset = -0.5f;  // Height below camera
+    public float heightOffset = -1.0f;  // Height below camera
     public float waveMovementStrength = 0.2f; // How much water moves with breathing
     private float waveTime;
 
