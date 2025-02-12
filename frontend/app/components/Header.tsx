@@ -1,12 +1,15 @@
 import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { Link } from 'expo-router';
 
 export default function Header({ title }: { title: string }) {
     return (
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.container}>
                 <Text style={styles.title}>{title}</Text>
-                <MaterialIcons name="account-circle" size={40} color="#F5F5F5" />
+                <Link href="/account">
+                    <MaterialIcons name="account-circle" size={40} color="#F5F5F5" />
+                </Link>
             </View>
         </SafeAreaView>
     );
