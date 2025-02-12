@@ -1,18 +1,27 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 export default function Header({ title }: { title: string }) {
     return (
-        <View style={styles.container}>
-            <Text style={styles.title}>{title}</Text>
-        </View>
+        <SafeAreaView style={styles.safeArea}>
+            <View style={styles.container}>
+                <Text style={styles.title}>{title}</Text>
+                <MaterialIcons name="account-circle" size={40} color="#F5F5F5" />
+            </View>
+        </SafeAreaView>
     );
 }
 
 const styles = StyleSheet.create({
+    safeArea: {
+        backgroundColor: '#B1D699',
+    },
     container: {
-        padding: 20,
-        backgroundColor: '#1e90ff',
+        height: 130,  // Fixed height
+        paddingHorizontal: 20,
+        flexDirection: 'row',
         alignItems: 'center',
+        justifyContent: 'space-between',
     },
     title: {
         fontSize: 24,

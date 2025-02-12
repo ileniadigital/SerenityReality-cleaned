@@ -4,7 +4,7 @@ import Header from '../components/Header';
 export default function TabLayout() {
     return (
         <>
-            <Header title="My App" />
+            <Header title="SerenityReality" />
             <Tabs>
                 <Tabs.Screen name="index" options={{ title: 'Home' }} />
                 <Tabs.Screen name="about" options={{ title: 'About' }} />
