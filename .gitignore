@@ -71,3 +71,20 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+
+# Visual Studio
+.vs/
+.vscode/
+*.csproj
+*.sln
+*.suo
+*.user
+*.pidb
+*.unityproj
+
+# Node/React Native
+node_modules/
+*.log
+*.lock
+.env
