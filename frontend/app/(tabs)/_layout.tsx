@@ -6,9 +6,9 @@ export default function TabLayout() {
         <>
             <Header title="SerenityReality" />
             <Tabs>
-                <Tabs.Screen name="index" options={{ title: 'Home' }} />
-                <Tabs.Screen name="about" options={{ title: 'About' }} />
-                <Tabs.Screen name="account" options={{ title: 'Account' }} />
+                <Tabs.Screen name="index" options={{ headerShown: false }} />
+                <Tabs.Screen name="about" options={{ headerShown: false }} />
+                <Tabs.Screen name="account" options={{ headerShown: false }} />
             </Tabs>
         </>
     );
