@@ -23,6 +23,8 @@ const styles = StyleSheet.create({
     safeArea: {
         backgroundColor: '#B1D699',
         paddingTop: 0,
+        borderBottomLeftRadius: 30,
+        borderBottomRightRadius: 30,
     },
     container: {
         height: 130,  // Fixed height
