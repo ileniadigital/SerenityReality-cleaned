@@ -3,15 +3,21 @@ import Header from '../components/Header';
 import { MaterialIcons } from '@expo/vector-icons';
 import React from 'react';
 
-const homeIcon = ({ color, size }: { color: string; size: number }) => <MaterialIcons name="home" color={color} size={size} />;
-const aboutIcon = ({ color, size }: { color: string; size: number }) => <MaterialIcons name="info" color={color} size={size} />;
-const accountIcon = ({ color, size }: { color: string; size: number }) => <MaterialIcons name="account-circle" color={color} size={size} />;
+// Icons
+const ICON_SIZE = 30;
+const homeIcon = ({ color }: { color: string }) => <MaterialIcons name="home" color={color} size={ICON_SIZE} />;
+const aboutIcon = ({ color }: { color: string }) => <MaterialIcons name="info" color={color} size={ICON_SIZE} />;
+const accountIcon = ({ color }: { color: string }) => <MaterialIcons name="account-circle" color={color} size={ICON_SIZE} />;
 
 export default function TabLayout() {
     return (
         <>
             <Header title="SerenityReality" />
-            <Tabs>
+            <Tabs
+                screenOptions={{
+                    tabBarActiveTintColor: '#B1D699',
+                    tabBarInactiveTintColor: '#000000',
+                }}>
                 <Tabs.Screen name="index" options={{
                     headerShown: false, tabBarLabel: 'Home', tabBarIcon: homeIcon
                 }} />
