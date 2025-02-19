@@ -22,8 +22,8 @@ export default function TabLayout() {
                     headerShown: false, tabBarLabel: 'Home', tabBarIcon: homeIcon
                 }} />
 
-                <Tabs.Screen name="about" options={{ headerShown: false, tabBarLabel: 'About', tabBarIcon: aboutIcon, }} />
-                <Tabs.Screen name="account" options={{ headerShown: false, tabBarLabel: ' My Account', tabBarIcon: accountIcon, }} />
+                <Tabs.Screen name="about" options={{ headerShown: false, tabBarLabel: 'About', tabBarIcon: aboutIcon }} />
+                <Tabs.Screen name="account" options={{ headerShown: false, tabBarLabel: ' My Account', tabBarIcon: accountIcon }} />
             </Tabs>
         </>
     );

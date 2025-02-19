@@ -1,13 +1,25 @@
-import { Text, View, StyleSheet } from "react-native";
-import MoodRating from "../components/MoodRating";
+import { Text, View, StyleSheet, FlatList } from "react-native";
+import MoodRating from "../components/Home/MoodRating";
+import Scene from "../components/Home/Scene";
 
+const scenes = [
+  { id: '1', title: 'Sea Breathing', description: 'Description for Scene 1' },
+  { id: '2', title: 'Visualise your anxiety', description: 'Description for Scene 2' },
+  { id: '3', title: 'Sleep', description: 'Description for Scene 3' },
+  // { id: '4', title: 'Sea Breathing', description: 'Description for Scene 1' },
+  // { id: '5', title: 'Visualise your anxiety', description: 'Description for Scene 2' },
+  // { id: '6', title: 'Sleep', description: 'Description for Scene 3' },
+]
 export default function Index() {
   return (
-    <View
-      style={styles.container}
-    >
+    <View style={styles.container} >
       <MoodRating />
-    </View>
+      <FlatList
+        data={scenes}
+        renderItem={({ item }) => <Scene title={item.title} description={item.description} />}
+        keyExtractor={item => item.id}
+      />
+    </View >
   );
 }
 
