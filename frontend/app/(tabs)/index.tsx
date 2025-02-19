@@ -1,12 +1,12 @@
 import { Text, View, StyleSheet } from "react-native";
+import MoodRating from "../components/MoodRating";
 
 export default function Index() {
   return (
     <View
       style={styles.container}
     >
-      <Text style={styles.text}>This is a home screen</Text>
-
+      <MoodRating />
     </View>
   );
 }
