@@ -11,6 +11,10 @@ export default function Header({ title }: { title: string }) {
                     <MaterialIcons name="account-circle" size={40} color="#F5F5F5" />
                 </Link>
             </View>
+            <View style={styles.greeting}>
+                <Text style={styles.greetingText}>Hi, Ilenia</Text>
+                <Text style={styles.greetingText}>How are you feeling today?</Text>
+            </View>
         </SafeAreaView>
     );
 }
@@ -18,6 +22,7 @@ export default function Header({ title }: { title: string }) {
 const styles = StyleSheet.create({
     safeArea: {
         backgroundColor: '#B1D699',
+        paddingTop: 0,
     },
     container: {
         height: 130,  // Fixed height
@@ -30,5 +35,15 @@ const styles = StyleSheet.create({
         fontSize: 24,
         fontWeight: 'bold',
         color: '#ffffff',
+    },
+    greeting: {
+        alignItems: 'center',
+        marginTop: -30,
+        marginBottom: 20,
+    },
+    greetingText: {
+        fontSize: 22,
+        color: '#f5f5f5',
+        fontWeight: 'bold',
     },
 });

@@ -6,9 +6,9 @@ const scenes = [
   { id: '1', title: 'Sea Breathing', description: 'Description for Scene 1' },
   { id: '2', title: 'Visualise your anxiety', description: 'Description for Scene 2' },
   { id: '3', title: 'Sleep', description: 'Description for Scene 3' },
-  // { id: '4', title: 'Sea Breathing', description: 'Description for Scene 1' },
-  // { id: '5', title: 'Visualise your anxiety', description: 'Description for Scene 2' },
-  // { id: '6', title: 'Sleep', description: 'Description for Scene 3' },
+  { id: '4', title: 'Sea Breathing', description: 'Description for Scene 1' },
+  { id: '5', title: 'Visualise your anxiety', description: 'Description for Scene 2' },
+  { id: '6', title: 'Sleep', description: 'Description for Scene 3' },
 ]
 export default function Index() {
   return (
