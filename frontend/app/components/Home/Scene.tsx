@@ -1,11 +1,13 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
-
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 export default function Scene({ title, description }: { title: string, description: string }) {
     return (
         <View style={styles.container}>
-            <Button title="Play" onPress={() => { }} />
+            <TouchableOpacity onPress={() => { /* Add your play button logic here */ }} style={styles.button}>
+                <FontAwesome name="play-circle-o" size={55} color="#B1D699" />
+            </TouchableOpacity>
             <View style={styles.textContainer}>
                 <Text style={styles.title}>{title}</Text>
                 <Text style={styles.description}>{description}</Text>
@@ -30,6 +32,10 @@ const styles = StyleSheet.create({
         shadowRadius: 5,
         // Elevation for Android
         elevation: 5,
+    },
+    button: {
+        alignItems: "center",
+        justifyContent: "center",
     },
     textContainer: {
         marginLeft: 10,
