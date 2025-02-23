@@ -2,24 +2,62 @@ using UnityEngine;
 
 public class WaterWaveAnimator : MonoBehaviour
 {
-    public float waveAmplitude = 1f;     // Amplitude of the wave (how far the water moves up/down)
-    public float waveSpeed = 1f;         // Speed of the wave motion (how fast it moves)
-    public float waveDirection = 1f;     // Direction of the wave (positive for approaching, negative for retreating)
+    [Header("Wave Movement")]
+    public float inhaleDistance = 1f;  // Moves the water forward
+    public float exhaleDistance = 1f;  // Moves the water backward
+    public float moveSpeed = 1f;
 
-    private Vector3 startPosition;       // Starting position of the water block
+    [Header("Breathing Timings (seconds)")]
+    public float inhaleDuration = 4f;
+    public float holdDuration = 7f;
+    public float exhaleDuration = 8f;
+
+    private Vector3 startPosition;
+    private float timer;
+    private int phase = 0;
 
     void Start()
     {
-        // Store the starting position of the water block
         startPosition = transform.position;
     }
 
     void Update()
     {
-        // Create a smooth wave-like motion using sine function (for smooth oscillation)
-        float waveMovement = Mathf.Sin(Time.time * waveSpeed) * waveAmplitude * waveDirection;
+        timer += Time.deltaTime;
 
-        // Update the water block's position to simulate wave motion
-        transform.position = new Vector3(startPosition.x, startPosition.y + waveMovement, startPosition.z);
+        switch (phase)
+        {
+            case 0: // Inhale
+                MoveWater(inhaleDistance, inhaleDuration);
+                if (timer >= inhaleDuration)
+                {
+                    timer = 0;
+                    phase = 1;
+                }
+                break;
+
+            case 1: // Hold
+                if (timer >= holdDuration)
+                {
+                    timer = 0;
+                    phase = 2;
+                }
+                break;
+
+            case 2: // Exhale
+                MoveWater(-exhaleDistance, exhaleDuration);
+                if (timer >= exhaleDuration)
+                {
+                    timer = 0;
+                    phase = 0;
+                }
+                break;
+        }
+    }
+
+    void MoveWater(float distance, float duration)
+    {
+        float moveStep = (distance / duration) * Time.deltaTime * moveSpeed;
+        transform.position = new Vector3(startPosition.x, startPosition.y, transform.position.z + moveStep);
     }
 }

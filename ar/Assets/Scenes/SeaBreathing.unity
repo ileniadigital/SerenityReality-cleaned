@@ -1027,9 +1027,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 588917b306c39432e8d8f7dc8fce2bf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveAmplitude: 1
-  waveSpeed: 1
-  waveDirection: 1
+  inhaleDistance: 1
+  exhaleDistance: 1
+  moveSpeed: 5
+  inhaleDuration: 4
+  holdDuration: 7
+  exhaleDuration: 8
 --- !u!1 &1551178201
 GameObject:
   m_ObjectHideFlags: 0
@@ -1059,9 +1062,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 588917b306c39432e8d8f7dc8fce2bf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveAmplitude: 1
-  waveSpeed: 1
-  waveDirection: 1
+  inhaleDistance: 1
+  exhaleDistance: 1
+  moveSpeed: 1
+  inhaleDuration: 4
+  holdDuration: 7
+  exhaleDuration: 8
 --- !u!4 &1551178203
 Transform:
   m_ObjectHideFlags: 0
