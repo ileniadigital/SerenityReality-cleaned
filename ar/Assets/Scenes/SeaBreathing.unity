@@ -785,7 +785,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1507636620937791836, guid: 7097ba7ba649e1f41bba232312bdcbd8,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1506913539}
   m_SourcePrefab: {fileID: 100100000, guid: 7097ba7ba649e1f41bba232312bdcbd8, type: 3}
 --- !u!1 &1395467240
 GameObject:
@@ -999,12 +1003,33 @@ Transform:
   - {fileID: 404694245}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1506913535 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1507636620937791836, guid: 7097ba7ba649e1f41bba232312bdcbd8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1175339860}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1506913538 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1507636620937791777, guid: 7097ba7ba649e1f41bba232312bdcbd8,
     type: 3}
   m_PrefabInstance: {fileID: 1175339860}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1506913539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506913535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 588917b306c39432e8d8f7dc8fce2bf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveAmplitude: 1
+  waveSpeed: 1
+  waveDirection: 1
 --- !u!1 &1551178201
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,10 +1059,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 588917b306c39432e8d8f7dc8fce2bf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterMaterial: {fileID: 2100000, guid: 141d9d6ca43b6c843965491604c6deff, type: 2}
-  inhaleHeight: 1
-  exhaleHeight: 0.1
+  waveAmplitude: 1
   waveSpeed: 1
+  waveDirection: 1
 --- !u!4 &1551178203
 Transform:
   m_ObjectHideFlags: 0

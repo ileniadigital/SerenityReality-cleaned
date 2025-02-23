@@ -2,23 +2,24 @@ using UnityEngine;
 
 public class WaterWaveAnimator : MonoBehaviour
 {
-    public Material waterMaterial;    // The water material with the Shader Graph
-    public float inhaleHeight = 1.0f; // Maximum wave height (inhale)
-    public float exhaleHeight = 0.1f; // Minimum wave height (exhale)
-    public float waveSpeed = 1.0f; // Speed at which the waves animate (breathing)
+    public float waveAmplitude = 1f;     // Amplitude of the wave (how far the water moves up/down)
+    public float waveSpeed = 1f;         // Speed of the wave motion (how fast it moves)
+    public float waveDirection = 1f;     // Direction of the wave (positive for approaching, negative for retreating)
 
-    private float time;
+    private Vector3 startPosition;       // Starting position of the water block
+
+    void Start()
+    {
+        // Store the starting position of the water block
+        startPosition = transform.position;
+    }
 
     void Update()
     {
-        // Update time with a speed factor
-        time += Time.deltaTime * waveSpeed;
+        // Create a smooth wave-like motion using sine function (for smooth oscillation)
+        float waveMovement = Mathf.Sin(Time.time * waveSpeed) * waveAmplitude * waveDirection;
 
-        // Create a smooth oscillation between inhale and exhale heights
-        float waveHeight = Mathf.Lerp(exhaleHeight, inhaleHeight, (Mathf.Sin(time) + 1.0f) / 2.0f);
-
-        // Pass the animated values to the Shader
-        waterMaterial.SetFloat("_WaveHeight", waveHeight);
-        waterMaterial.SetFloat("_WaveTime", time);
+        // Update the water block's position to simulate wave motion
+        transform.position = new Vector3(startPosition.x, startPosition.y + waveMovement, startPosition.z);
     }
 }
