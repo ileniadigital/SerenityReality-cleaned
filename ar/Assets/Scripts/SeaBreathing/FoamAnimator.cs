@@ -1,49 +1,36 @@
 using UnityEngine;
 
-public class FoamAnimator : MonoBehaviour
+[RequireComponent(typeof(LineRenderer))]
+public class FoamLineAnimator : MonoBehaviour
 {
-    [Header("Materials")]
-    public Material foamMaterial; // Assign your foam material
+    [Header("Wave Settings")]
+    public int pointCount = 100; // Number of points for smooth curve
+    public float waveAmplitude = 0.5f; // Height of the wave
+    public float waveLength = 2f; // Distance between wave peaks
+    public float waveSpeed = 1f; // Speed of wave movement
 
-    [Header("Water Sync")]
-    public WaterWaveAnimator waterWaveAnimator; // Drag your water animator here
-
-    [Header("Foam Movement")]
-    public float foamSpeedMultiplier = 1f; // Adjust how fast foam moves compared to water
-    public Vector2 tiling = new Vector2(500f, 500f); // Control how zoomed-in the foam texture looks
-
-    private Vector2 foamOffset;
-    private Vector3 lastWaterPosition;
+    private LineRenderer lineRenderer;
+    private float timeOffset;
 
     void Start()
     {
-        if (foamMaterial != null)
-        {
-            foamMaterial.SetTextureScale("_MainTex", tiling);
-        }
-
-        if (waterWaveAnimator != null)
-        {
-            lastWaterPosition = waterWaveAnimator.transform.position;
-        }
+        lineRenderer = GetComponent<LineRenderer>();
+        lineRenderer.positionCount = pointCount;
+        timeOffset = Random.Range(0f, 100f); // Randomize starting point of wave
     }
 
     void Update()
     {
-        if (foamMaterial != null && waterWaveAnimator != null)
+        AnimateWave();
+    }
+
+    void AnimateWave()
+    {
+        for (int i = 0; i < pointCount; i++)
         {
-            //// Calculate water movement since the last frame
-            //Vector3 waterMovement = waterWaveAnimator.transform.position - lastWaterPosition;
-
-            //// Move the foam texture based on water movement
-            //foamOffset += new Vector2(waterMovement.x, waterMovement.z) * foamSpeedMultiplier;
-            //foamMaterial.SetTextureOffset(" _MainTex", foamOffset);
-
-            //// Store the water's current position for the next frame
-            //lastWaterPosition = waterWaveAnimator.transform.position;
-            foamOffset += new Vector2(Time.deltaTime * 0.1f, Time.deltaTime * 0.1f);
-            foamMaterial.SetTextureOffset("_MainTex", foamOffset);
-
+            float x = i * (waveLength / pointCount); // Spread points evenly
+            float y = Mathf.Sin((x + Time.time * waveSpeed + timeOffset) * Mathf.PI * 2f) * waveAmplitude;
+            lineRenderer.SetPosition(i, new Vector3(x, y, 0));
         }
     }
 }
