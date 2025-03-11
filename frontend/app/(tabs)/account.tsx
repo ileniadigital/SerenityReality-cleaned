@@ -1,5 +1,6 @@
+import { usePathname } from 'expo-router';
 import React from 'react';
-import { View, Text, StyleSheet, Button, TextInput } from 'react-native';
+import { View, Text, StyleSheet, Button, TextInput, TouchableOpacity } from 'react-native';
 
 const AccountPage: React.FC = () => {
     return (
@@ -23,8 +24,12 @@ const AccountPage: React.FC = () => {
                 <Text style={styles.label}>Password</Text>
                 <TextInput style={styles.value} secureTextEntry={true}>123</TextInput>
             </View>
-            <Button title="Edit Profile" onPress={() => { }} />
-            <Button title="Logout" onPress={() => { }} />
+
+            {/* Update Profile Button */}
+            <TouchableOpacity style={styles.updateButton} onPress={() => { }}>
+                <Text style={styles.label}>Update Profile</Text>
+            </TouchableOpacity>
+            {/* <Button title="Logout" onPress={() => { }} /> */}
         </View>
     );
 };
@@ -58,5 +63,21 @@ const styles = StyleSheet.create({
         backgroundColor: '#D9D9D9',
         margin: 3,
         padding: 7,
+    },
+    updateButton: {
+        backgroundColor: '#B1D699',
+        padding: 10,
+        borderRadius: 10,
+        marginTop: 20,
+        width: '50%',
+        alignItems: 'center',
+        marginLeft: '25%',
+        // Shadow
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.5,
+        shadowRadius: 5,
+        // Elevation for Android
+        elevation: 5,
     },
 });
