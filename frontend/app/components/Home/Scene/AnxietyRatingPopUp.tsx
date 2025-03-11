@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Modal, Button, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Modal, TouchableOpacity } from 'react-native';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 export default function AnxietyRatingPopUp({ modalVisible, setModalVisible }: { modalVisible: boolean, setModalVisible: React.Dispatch<React.SetStateAction<boolean>> }) {
@@ -15,7 +15,7 @@ export default function AnxietyRatingPopUp({ modalVisible, setModalVisible }: { 
             <View style={styles.modalContainer}>
                 <View style={styles.modalView}>
                     <TouchableOpacity style={styles.closeButton} onPress={() => setModalVisible(!modalVisible)}>
-                        <FontAwesome name="close" size={24} color="#black" />
+                        <FontAwesome name="close" size={24} color="black" />
                     </TouchableOpacity>
                     <Text style={styles.modalText}>How anxious or stressed are you feeling right now?</Text>
                     {/* Buttons from 1 to 10 */}
@@ -31,11 +31,12 @@ export default function AnxietyRatingPopUp({ modalVisible, setModalVisible }: { 
                         ))}
                     </View>
                     {/* Button to play scene */}
-                    {/* ADD BUTTON */}
-                    <TouchableOpacity style={styles.playButton}>
-                        <FontAwesome name="play-circle-o" size={55} color="#f5f5f5" />
-                        <Text style={styles.buttonText}>Start Scene</Text>
-                    </TouchableOpacity>
+                    <View style={styles.playContainer}>
+                        <TouchableOpacity style={styles.playButton}>
+                            <FontAwesome name="play-circle-o" size={55} color="#f5f5f5" />
+                            <Text style={styles.buttonText}>Start Scene</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </View>
         </Modal>
@@ -89,12 +90,16 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         fontSize: 18,
+        marginLeft: 10,
+    },
+    playContainer: {
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: 20,
+        flexDirection: "row",
     },
     playButton: {
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "center",
-        marginTop: 20,
-        gap: 10,
-    }
-}); 
+    },
+});

@@ -1,20 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-
 import PlayButton from './PlayButton';
+import AnxietyRatingPopUp from './AnxietyRatingPopUp';
 
 export default function Scene({ title, description }: { title: string, description: string }) {
+    const [modalVisible, setModalVisible] = useState(false);
+
     return (
         <View style={styles.container}>
-            <PlayButton />
-            <View style={styles.textContainer}>
+            <PlayButton setModalVisible={setModalVisible} />
+            <TouchableOpacity style={styles.textContainer} onPress={() => setModalVisible(true)}>
                 <Text style={styles.title}>{title}</Text>
                 <Text style={styles.description}>{description}</Text>
-            </View>
-        </View >
-    )
-};
+            </TouchableOpacity>
+            <AnxietyRatingPopUp modalVisible={modalVisible} setModalVisible={setModalVisible} />
+        </View>
+    );
+}
 
 const styles = StyleSheet.create({
     container: {
@@ -32,10 +34,6 @@ const styles = StyleSheet.create({
         shadowRadius: 5,
         // Elevation for Android
         elevation: 5,
-    },
-    button: {
-        alignItems: "center",
-        justifyContent: "center",
     },
     textContainer: {
         marginLeft: 10,
