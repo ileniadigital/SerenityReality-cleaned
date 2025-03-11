@@ -2,17 +2,17 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 
+import PlayButton from './PlayButton';
+
 export default function Scene({ title, description }: { title: string, description: string }) {
     return (
         <View style={styles.container}>
-            <TouchableOpacity onPress={() => { /* Add your play button logic here */ }} style={styles.button}>
-                <FontAwesome name="play-circle-o" size={55} color="#B1D699" />
-            </TouchableOpacity>
+            <PlayButton />
             <View style={styles.textContainer}>
                 <Text style={styles.title}>{title}</Text>
                 <Text style={styles.description}>{description}</Text>
             </View>
-        </View>
+        </View >
     )
 };
 

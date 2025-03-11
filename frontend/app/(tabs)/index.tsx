@@ -1,6 +1,6 @@
 import { Text, View, StyleSheet, FlatList } from "react-native";
 import MoodRating from "../components/Home/MoodRating";
-import Scene from "../components/Home/Scene";
+import Scene from "../components/Home/Scene/Scene";
 
 const scenes = [
   { id: '1', title: 'Sea Breathing', description: 'Description for Scene 1' },
