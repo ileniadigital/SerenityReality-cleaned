@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Modal, Button } from 'react-native';
+import { View, Text, StyleSheet, Modal, Button, TouchableOpacity } from 'react-native';
 
 export default function AnxietyRatingPopUp({ modalVisible, setModalVisible }: { modalVisible: boolean, setModalVisible: React.Dispatch<React.SetStateAction<boolean>> }) {
     return (
@@ -13,7 +13,19 @@ export default function AnxietyRatingPopUp({ modalVisible, setModalVisible }: { 
         >
             <View style={styles.modalContainer}>
                 <View style={styles.modalView}>
-                    <Text style={styles.modalText}>This is the pop-up content!</Text>
+                    <Text style={styles.modalText}>How anxious or stressed are you feeling right now?</Text>
+                    {/* Buttons from 1 to 10 */}
+                    <View style={styles.buttonContainer}>
+                        {[...Array(5)].map((_, index) => (
+                            <TouchableOpacity
+                                key={index + 1}
+                                onPress={() => console.log(`Button ${index + 1} pressed`)}
+                                style={styles.button}
+                            >
+                                <Text style={styles.buttonText}>{index + 1}</Text>
+                            </TouchableOpacity>
+                        ))}
+                    </View>
                     <Button title="Close" onPress={() => setModalVisible(!modalVisible)} />
                 </View>
             </View>
@@ -30,10 +42,12 @@ const styles = StyleSheet.create({
     },
     modalView: {
         margin: 20,
-        backgroundColor: "white",
+        backgroundColor: "#B1D699",
         borderRadius: 20,
         padding: 35,
         alignItems: "center",
+        width: "90%",
+        // Shadows
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -46,5 +60,20 @@ const styles = StyleSheet.create({
     modalText: {
         marginBottom: 15,
         textAlign: "center",
+        fontSize: 20,
     },
-});
+    buttonContainer: {
+        flexDirection: "row",
+        justifyContent: "center",
+        alignSelf: "center",
+        marginHorizontal: 20,
+    },
+    button: {
+        padding: 10,
+        margin: 5,
+        borderRadius: 5,
+    },
+    buttonText: {
+        fontSize: 18,
+    },
+}); 
