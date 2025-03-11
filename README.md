@@ -9,9 +9,9 @@
 
 # Sea wave meditation
 - Scan floors
-- [TO DO] Load sea
-- [TO DO] Breathing exercise (4-7-8)
-- [TO DO] Ad button for user to stop
+- Load sea
+- Breathing exercise (4-7-8)
+- Add button for user to stop
 
 
 # Front-end of app

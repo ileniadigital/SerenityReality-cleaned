@@ -1,4 +1,4 @@
-Library: /Users/ilenia/Desktop/SerenityReality/Temp/BurstOutput/tempburstlibs/armeabi-v7a/lib_burst_generated
+Library: /Users/ilenia/Desktop/SerenityReality/ar/Temp/BurstOutput/tempburstlibs/armeabi-v7a/lib_burst_generated
 --platform=Android
 --backend=burst-llvm-16
 --target=ARMV7A_NEON32
@@ -8,10 +8,10 @@ Library: /Users/ilenia/Desktop/SerenityReality/Temp/BurstOutput/tempburstlibs/ar
 --float-precision=Standard
 --target-framework=NetFramework
 --generate-link-xml=Temp/burst.link.xml
---temp-folder=/Users/ilenia/Desktop/SerenityReality/Temp/Burst
+--temp-folder=/Users/ilenia/Desktop/SerenityReality/ar/Temp/Burst
 --key-folder=/Applications/2022.3.55f1/PlaybackEngines/AndroidPlayer
---decode-folder=/Users/ilenia/Desktop/SerenityReality/Library/Burst
---output=/Users/ilenia/Desktop/SerenityReality/Temp/BurstOutput/tempburstlibs/armeabi-v7a/lib_burst_generated
+--decode-folder=/Users/ilenia/Desktop/SerenityReality/ar/Library/Burst
+--output=/Users/ilenia/Desktop/SerenityReality/ar/Temp/BurstOutput/tempburstlibs/armeabi-v7a/lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=UnityEngine.XR.Interaction.Toolkit.Utilities.BurstMathUtility, Unity.XR.Interaction.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::ProjectOnPlane(Unity.Mathematics.float3&, Unity.Mathematics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null|Unity.Mathematics.float3&, Unity.Mathematics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null|Unity.Mathematics.float3&, Unity.Mathematics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null)--1819bc9925667b008fd6c3e6019ccf71
@@ -102,10 +102,10 @@ Library: /Users/ilenia/Desktop/SerenityReality/Temp/BurstOutput/tempburstlibs/ar
 --target-framework=NetFramework
 --float-mode=Fast
 --generate-link-xml=Temp/burst.link.xml
---temp-folder=/Users/ilenia/Desktop/SerenityReality/Temp/Burst
+--temp-folder=/Users/ilenia/Desktop/SerenityReality/ar/Temp/Burst
 --key-folder=/Applications/2022.3.55f1/PlaybackEngines/AndroidPlayer
---decode-folder=/Users/ilenia/Desktop/SerenityReality/Library/Burst
---output=/Users/ilenia/Desktop/SerenityReality/Temp/BurstOutput/tempburstlibs/armeabi-v7a/lib_burst_generated
+--decode-folder=/Users/ilenia/Desktop/SerenityReality/ar/Library/Burst
+--output=/Users/ilenia/Desktop/SerenityReality/ar/Temp/BurstOutput/tempburstlibs/armeabi-v7a/lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=Unity.Jobs.IJobForExtensions+ForJobStruct`1[[UnityEngine.Rendering.Universal.ZBinningJob, Unity.RenderPipelines.Universal.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Execute(UnityEngine.Rendering.Universal.ZBinningJob&, Unity.RenderPipelines.Universal.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|Unity.Jobs.LowLevel.Unsafe.JobRanges&, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)--77fc393cb521ac129b1392d4eb94d29a
