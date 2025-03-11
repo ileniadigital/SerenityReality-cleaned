@@ -30,7 +30,12 @@ export default function AnxietyRatingPopUp({ modalVisible, setModalVisible }: { 
                             </TouchableOpacity>
                         ))}
                     </View>
-                    <Button title="Close" onPress={() => setModalVisible(!modalVisible)} />
+                    {/* Button to play scene */}
+                    {/* ADD BUTTON */}
+                    <TouchableOpacity style={styles.playButton}>
+                        <FontAwesome name="play-circle-o" size={55} color="#f5f5f5" />
+                        <Text style={styles.buttonText}>Start Scene</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         </Modal>
@@ -85,4 +90,11 @@ const styles = StyleSheet.create({
     buttonText: {
         fontSize: 18,
     },
+    playButton: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: 20,
+        gap: 10,
+    }
 }); 
