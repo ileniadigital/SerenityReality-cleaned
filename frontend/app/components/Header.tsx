@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     title: {
-        fontSize: 24,
+        fontSize: 20,
         fontWeight: 'bold',
         color: '#ffffff',
     },
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     greetingText: {
-        fontSize: 22,
+        fontSize: 25,
         color: '#f5f5f5',
         fontWeight: 'bold',
     },
