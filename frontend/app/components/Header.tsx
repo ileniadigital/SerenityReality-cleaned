@@ -8,7 +8,7 @@ export default function Header({ title }: { title: string }) {
             <View style={styles.container}>
                 <Text style={styles.title}>{title}</Text>
                 <Link href="/account">
-                    <MaterialIcons name="account-circle" size={40} color="#F5F5F5" />
+                    <MaterialIcons name="account-circle" size={40} color="#000000" />
                 </Link>
             </View>
             <View style={styles.greeting}>
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 20,
         fontWeight: 'bold',
-        color: '#ffffff',
+        color: '#000000',
     },
     greeting: {
         alignItems: 'center',
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     },
     greetingText: {
         fontSize: 25,
-        color: '#f5f5f5',
+        color: '#000000',
         fontWeight: 'bold',
     },
 });
