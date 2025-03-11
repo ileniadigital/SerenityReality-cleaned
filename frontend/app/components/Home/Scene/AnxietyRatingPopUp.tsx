@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, Modal, Button, TouchableOpacity } from 'react-native';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 export default function AnxietyRatingPopUp({ modalVisible, setModalVisible }: { modalVisible: boolean, setModalVisible: React.Dispatch<React.SetStateAction<boolean>> }) {
     return (
@@ -13,6 +14,9 @@ export default function AnxietyRatingPopUp({ modalVisible, setModalVisible }: { 
         >
             <View style={styles.modalContainer}>
                 <View style={styles.modalView}>
+                    <TouchableOpacity style={styles.closeButton} onPress={() => setModalVisible(!modalVisible)}>
+                        <FontAwesome name="close" size={24} color="#black" />
+                    </TouchableOpacity>
                     <Text style={styles.modalText}>How anxious or stressed are you feeling right now?</Text>
                     {/* Buttons from 1 to 10 */}
                     <View style={styles.buttonContainer}>
@@ -56,6 +60,11 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 4,
         elevation: 5,
+    },
+    closeButton: {
+        position: 'absolute',
+        top: 10,
+        right: 10,
     },
     modalText: {
         marginBottom: 15,
