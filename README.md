@@ -15,10 +15,10 @@
 
 
 # Front-end of app
-- [TO DO] Home page set up
-- [TO DO] Account page set up
-- [TO DO] Log in front end
+- Home page set up
+- Account page set up
+- Log in front end
 
 
 # Back-end of the app
-- [TO DO] Reesearch: Django or Firebase?
+- Firebase
