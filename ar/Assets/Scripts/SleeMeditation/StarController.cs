@@ -43,17 +43,18 @@ public class StarSpawner : MonoBehaviour
     {
         Image starImage = star.GetComponent<Image>();
 
-        // Inhale Phase (4 seconds)
+        // Inhale Phase (4 seconds) - Brighten
         for (int i = 4; i > 0; i--)
         {
             instructionText.text = "Inhale for\n " + i;
-            float alpha = Mathf.Lerp(0.5f, 1f, 1 - (i / 5f)); // Gradually increase brightness
-            starImage.color = new Color(1f, 1f, 1f, alpha);
+            float brightness = Mathf.Lerp(1f, 3f, 1 - (i / 4f)); // Overbrighten effect
+            starImage.color = new Color(brightness, brightness, brightness, 1f);
             yield return new WaitForSeconds(1f);
         }
 
-        // Hold Breath Phase (7 seconds)
+        // Hold Breath Phase (7 seconds) - Stay bright
         instructionText.text = "Hold for\n 7";
+        starImage.color = new Color(3f, 3f, 3f, 1f); // Peak brightness
         yield return new WaitForSeconds(1f);
         for (int i = 6; i > 0; i--)
         {
@@ -61,12 +62,12 @@ public class StarSpawner : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
 
-        // Exhale Phase (8 seconds)
+        // Exhale Phase (8 seconds) - Dim back
         for (int i = 8; i > 0; i--)
         {
             instructionText.text = "Exhale for\n " + i;
-            float alpha = Mathf.Lerp(1f, 0.5f, 1 - (i / 8f)); // Gradually decrease brightness
-            starImage.color = new Color(1f, 1f, 1f, alpha);
+            float brightness = Mathf.Lerp(3f, 0.5f, 1 - (i / 8f)); // Gradually dim
+            starImage.color = new Color(brightness, brightness, brightness, 1f);
             yield return new WaitForSeconds(1f);
         }
 
@@ -74,12 +75,24 @@ public class StarSpawner : MonoBehaviour
         spawnButton.interactable = true;
     }
 
+
     Vector2 GetRandomPosition()
     {
         for (int attempts = 0; attempts < 50; attempts++)
         {
-            float randomX = Random.Range(-canvasTransform.rect.width / 2, canvasTransform.rect.width / 2);
-            float randomY = Random.Range(-canvasTransform.rect.height / 2, canvasTransform.rect.height / 2);
+            float halfWidth = canvasTransform.rect.width / 2;
+            float halfHeight = canvasTransform.rect.height / 2;
+
+            float starWidth = starPrefab.GetComponent<RectTransform>().sizeDelta.x;
+            float starHeight = starPrefab.GetComponent<RectTransform>().sizeDelta.y;
+
+            float minX = -halfWidth + (starWidth / 2);
+            float maxX = halfWidth - (starWidth / 2);
+            float minY = -halfHeight + (starHeight / 2);
+            float maxY = halfHeight - (starHeight / 2);
+
+            float randomX = Random.Range(minX, maxX);
+            float randomY = Random.Range(minY, maxY);
             Vector2 newPosition = new Vector2(randomX, randomY);
 
             bool tooClose = false;
@@ -96,6 +109,7 @@ public class StarSpawner : MonoBehaviour
                 return newPosition;
         }
 
-        return Vector2.zero; // Return (0,0) if no space found
+        return Vector2.zero; // Return (0,0) if no space is found
     }
+
 }
