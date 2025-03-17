@@ -43,30 +43,29 @@ public class StarSpawner : MonoBehaviour
     {
         Image starImage = star.GetComponent<Image>();
 
-        // Countdown for inhale (5 → 4 → 3 → 2 → 1)
-        for (int i = 5; i > 0; i--)
+        // Inhale Phase (4 seconds)
+        for (int i = 4; i > 0; i--)
         {
-            instructionText.text = "Inhale for " + i;
+            instructionText.text = "Inhale for\n " + i;
+            float alpha = Mathf.Lerp(0.5f, 1f, 1 - (i / 5f)); // Gradually increase brightness
+            starImage.color = new Color(1f, 1f, 1f, alpha);
             yield return new WaitForSeconds(1f);
         }
 
-        // Brighten the star over 4 seconds
-        for (float t = 0; t < 4f; t += Time.deltaTime)
+        // Hold Breath Phase (7 seconds)
+        instructionText.text = "Hold for\n 7";
+        yield return new WaitForSeconds(1f);
+        for (int i = 6; i > 0; i--)
         {
-            float alpha = Mathf.Lerp(0.5f, 1f, t / 4f);
-            starImage.color = new Color(1f, 1f, 1f, alpha);
-            yield return null;
+            instructionText.text = "Hold for\n " + i;
+            yield return new WaitForSeconds(1f);
         }
 
-        // Hold brightness (7 seconds)
-        instructionText.text = "Hold your breath...";
-        yield return new WaitForSeconds(7f);
-
-        // Countdown for exhale (8 → 7 → 6 → ... → 1)
+        // Exhale Phase (8 seconds)
         for (int i = 8; i > 0; i--)
         {
-            instructionText.text = "Exhale for " + i;
-            float alpha = Mathf.Lerp(1f, 0.5f, 1f - (i / 8f));
+            instructionText.text = "Exhale for\n " + i;
+            float alpha = Mathf.Lerp(1f, 0.5f, 1 - (i / 8f)); // Gradually decrease brightness
             starImage.color = new Color(1f, 1f, 1f, alpha);
             yield return new WaitForSeconds(1f);
         }
