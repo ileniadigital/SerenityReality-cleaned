@@ -86,7 +86,7 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.serenityreality"
+    namespace 'com.ileniadigital.serenityreality'
     defaultConfig {
         applicationId 'com.ileniadigital.serenityreality'
         minSdkVersion rootProject.ext.minSdkVersion
