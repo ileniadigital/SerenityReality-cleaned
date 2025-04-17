@@ -2,6 +2,11 @@ import React from 'react';
 import { View, Text, StyleSheet, Modal, TouchableOpacity } from 'react-native';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 
+// Import Unity Module
+import { NativeModules } from 'react-native';
+const { UnityLauncher } = NativeModules;
+
+
 export default function AnxietyRatingPopUp({ modalVisible, setModalVisible }: { modalVisible: boolean, setModalVisible: React.Dispatch<React.SetStateAction<boolean>> }) {
     return (
         <Modal
@@ -32,7 +37,7 @@ export default function AnxietyRatingPopUp({ modalVisible, setModalVisible }: { 
                     </View>
                     {/* Button to play scene */}
                     <View style={styles.playContainer}>
-                        <TouchableOpacity style={styles.playButton}>
+                        <TouchableOpacity style={styles.playButton} onPress={() => UnityLauncher.launchUnityScene("SeaBreathing")}>
                             <FontAwesome name="play-circle-o" size={55} color="#f5f5f5" />
                             <Text style={styles.buttonText}>Start Scene</Text>
                         </TouchableOpacity>

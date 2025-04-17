@@ -1,4 +1,8 @@
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.ileniadigital.serenityreality">
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
   <uses-permission android:name="android.permission.INTERNET"/>
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
   <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
@@ -26,6 +30,7 @@
         <category android:name="android.intent.category.BROWSABLE"/>
         <data android:scheme="ileniadigital"/>
         <data android:scheme="com.ileniadigital.serenityreality"/>
+        <data android:scheme="exp+serenityreality"/>
       </intent-filter>
     </activity>
   </application>
