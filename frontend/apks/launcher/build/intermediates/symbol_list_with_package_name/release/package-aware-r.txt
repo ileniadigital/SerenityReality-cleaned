@@ -1,0 +1,35 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+com.SerenityReality.Visualisation
+=======
+com.SerenityReality.SeaBreathing
+>>>>>>> a436d45 (Removed seabreathing apk with wrong package name + imported SleepMeditation apk with correct package name)
+=======
+com.SerenityReality.Visualisation
+>>>>>>> d295257 (Exported all apks with correct packagenames, moved all scene info to a data.ts file, adjusted scene and pop up rating components to take package name as prop)
+color staticSplashScreenBackgroundColor
+id __arcore_cancelButton
+id __arcore_continueButton
+id __arcore_messageText
+id unitySurfaceView
+layout __arcore_education
+mipmap app_icon
+mipmap app_icon_round
+mipmap ic_launcher_background
+mipmap ic_launcher_foreground
+raw keep_arcore
+string FreeformWindowOrientation_landscape
+string FreeformWindowOrientation_portrait
+string FreeformWindowSize_maximize
+string FreeformWindowSize_phone
+string FreeformWindowSize_tablet
+string __arcore_cancel
+string __arcore_continue
+string __arcore_install_app
+string __arcore_install_feature
+string __arcore_installing
+string app_name
+string game_view_content_description
+style BaseUnityTheme
+style UnityThemeSelector
+style UnityThemeSelector_Translucent

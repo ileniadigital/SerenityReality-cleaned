@@ -1,0 +1,28 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+<<<<<<< HEAD
+<<<<<<< HEAD
+  "applicationId": "com.SerenityReality.Visualisation",
+=======
+  "applicationId": "com.SerenityReality.SeaBreathing",
+>>>>>>> a436d45 (Removed seabreathing apk with wrong package name + imported SleepMeditation apk with correct package name)
+=======
+  "applicationId": "com.SerenityReality.Visualisation",
+>>>>>>> d295257 (Exported all apks with correct packagenames, moved all scene info to a data.ts file, adjusted scene and pop up rating components to take package name as prop)
+  "variantName": "release",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "attributes": [],
+      "versionCode": 1,
+      "versionName": "1.0.0",
+      "outputFile": "launcher-release.apk"
+    }
+  ],
+  "elementType": "File"
+}

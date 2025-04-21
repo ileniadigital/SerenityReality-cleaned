@@ -1,0 +1,53 @@
+[
+    {
+<<<<<<< HEAD
+<<<<<<< HEAD
+        "merged": "com.SerenityReality.Visualisation.launcher-merged_res-6:/mipmap-anydpi-v26_app_icon.xml.flat",
+        "source": "com.SerenityReality.Visualisation.launcher-main-7:/mipmap-anydpi-v26/app_icon.xml"
+    },
+    {
+        "merged": "com.SerenityReality.Visualisation.launcher-merged_res-6:/mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "com.SerenityReality.Visualisation.launcher-main-7:/mipmap-mdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.SerenityReality.Visualisation.launcher-merged_res-6:/mipmap-mdpi_ic_launcher_background.png.flat",
+        "source": "com.SerenityReality.Visualisation.launcher-main-7:/mipmap-mdpi/ic_launcher_background.png"
+    },
+    {
+        "merged": "com.SerenityReality.Visualisation.launcher-merged_res-6:/mipmap-anydpi-v26_app_icon_round.xml.flat",
+        "source": "com.SerenityReality.Visualisation.launcher-main-7:/mipmap-anydpi-v26/app_icon_round.xml"
+    },
+    {
+        "merged": "com.SerenityReality.Visualisation.launcher-merged_res-6:/mipmap-mdpi_app_icon.png.flat",
+        "source": "com.SerenityReality.Visualisation.launcher-main-7:/mipmap-mdpi/app_icon.png"
+=======
+        "merged": "com.SerenityReality.SeaBreathing.launcher-merged_res-6:/mipmap-anydpi-v26_app_icon_round.xml.flat",
+        "source": "com.SerenityReality.SeaBreathing.launcher-main-7:/mipmap-anydpi-v26/app_icon_round.xml"
+=======
+        "merged": "com.SerenityReality.Visualisation.launcher-merged_res-6:/mipmap-anydpi-v26_app_icon.xml.flat",
+        "source": "com.SerenityReality.Visualisation.launcher-main-7:/mipmap-anydpi-v26/app_icon.xml"
+>>>>>>> d295257 (Exported all apks with correct packagenames, moved all scene info to a data.ts file, adjusted scene and pop up rating components to take package name as prop)
+    },
+    {
+        "merged": "com.SerenityReality.Visualisation.launcher-merged_res-6:/mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "com.SerenityReality.Visualisation.launcher-main-7:/mipmap-mdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.SerenityReality.Visualisation.launcher-merged_res-6:/mipmap-mdpi_ic_launcher_background.png.flat",
+        "source": "com.SerenityReality.Visualisation.launcher-main-7:/mipmap-mdpi/ic_launcher_background.png"
+    },
+    {
+        "merged": "com.SerenityReality.Visualisation.launcher-merged_res-6:/mipmap-anydpi-v26_app_icon_round.xml.flat",
+        "source": "com.SerenityReality.Visualisation.launcher-main-7:/mipmap-anydpi-v26/app_icon_round.xml"
+    },
+    {
+<<<<<<< HEAD
+        "merged": "com.SerenityReality.SeaBreathing.launcher-merged_res-6:/mipmap-mdpi_app_icon.png.flat",
+        "source": "com.SerenityReality.SeaBreathing.launcher-main-7:/mipmap-mdpi/app_icon.png"
+>>>>>>> a436d45 (Removed seabreathing apk with wrong package name + imported SleepMeditation apk with correct package name)
+=======
+        "merged": "com.SerenityReality.Visualisation.launcher-merged_res-6:/mipmap-mdpi_app_icon.png.flat",
+        "source": "com.SerenityReality.Visualisation.launcher-main-7:/mipmap-mdpi/app_icon.png"
+>>>>>>> d295257 (Exported all apks with correct packagenames, moved all scene info to a data.ts file, adjusted scene and pop up rating components to take package name as prop)
+    }
+]

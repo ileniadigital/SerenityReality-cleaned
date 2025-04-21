@@ -1,0 +1,12 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+#Mon Mar 24 15:31:52 GMT 2025
+=======
+#Mon Mar 24 15:24:37 GMT 2025
+>>>>>>> a436d45 (Removed seabreathing apk with wrong package name + imported SleepMeditation apk with correct package name)
+=======
+#Mon Mar 24 15:31:52 GMT 2025
+>>>>>>> d295257 (Exported all apks with correct packagenames, moved all scene info to a data.ts file, adjusted scene and pop up rating components to take package name as prop)
+base.0=C\:\\Users\\ileni\\SerenityReality\\frontend\\apks\\launcher\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
+renamed.0=classes.dex
+path.0=classes.dex

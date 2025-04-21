@@ -1,0 +1,9 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+e9cad598-2b08-449d-8b68-01ccb5c528cb
+=======
+e42b0a55-1528-4301-ad3f-c7e78d02ab12
+>>>>>>> a436d45 (Removed seabreathing apk with wrong package name + imported SleepMeditation apk with correct package name)
+=======
+e9cad598-2b08-449d-8b68-01ccb5c528cb
+>>>>>>> d295257 (Exported all apks with correct packagenames, moved all scene info to a data.ts file, adjusted scene and pop up rating components to take package name as prop)

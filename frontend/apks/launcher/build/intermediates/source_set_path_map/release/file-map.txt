@@ -1,0 +1,31 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d295257 (Exported all apks with correct packagenames, moved all scene info to a data.ts file, adjusted scene and pop up rating components to take package name as prop)
+com.SerenityReality.Visualisation.launcher-jetified-arcore_client-0 C:\Users\ileni\.gradle\caches\transforms-3\8f56f7bd0e5bdc0c456829721fdd8247\transformed\jetified-arcore_client\res
+com.SerenityReality.Visualisation.launcher-pngs-1 C:\Users\ileni\SerenityReality\frontend\apks\launcher\build\generated\res\pngs\release
+com.SerenityReality.Visualisation.launcher-resValues-2 C:\Users\ileni\SerenityReality\frontend\apks\launcher\build\generated\res\resValues\release
+com.SerenityReality.Visualisation.launcher-rs-3 C:\Users\ileni\SerenityReality\frontend\apks\launcher\build\generated\res\rs\release
+com.SerenityReality.Visualisation.launcher-mergeReleaseResources-4 C:\Users\ileni\SerenityReality\frontend\apks\launcher\build\intermediates\incremental\release\mergeReleaseResources\merged.dir
+com.SerenityReality.Visualisation.launcher-mergeReleaseResources-5 C:\Users\ileni\SerenityReality\frontend\apks\launcher\build\intermediates\incremental\release\mergeReleaseResources\stripped.dir
+com.SerenityReality.Visualisation.launcher-merged_res-6 C:\Users\ileni\SerenityReality\frontend\apks\launcher\build\intermediates\merged_res\release
+com.SerenityReality.Visualisation.launcher-main-7 C:\Users\ileni\SerenityReality\frontend\apks\launcher\src\main\res
+com.SerenityReality.Visualisation.launcher-release-8 C:\Users\ileni\SerenityReality\frontend\apks\launcher\src\release\res
+com.SerenityReality.Visualisation.launcher-packaged_res-9 C:\Users\ileni\SerenityReality\frontend\apks\unityLibrary\build\intermediates\packaged_res\release
+com.SerenityReality.Visualisation.launcher-packaged_res-10 C:\Users\ileni\SerenityReality\frontend\apks\unityLibrary\xrmanifest.androidlib\build\intermediates\packaged_res\release
+<<<<<<< HEAD
+=======
+com.SerenityReality.SeaBreathing.launcher-jetified-arcore_client-0 C:\Users\ileni\.gradle\caches\transforms-3\8f56f7bd0e5bdc0c456829721fdd8247\transformed\jetified-arcore_client\res
+com.SerenityReality.SeaBreathing.launcher-pngs-1 C:\Users\ileni\SerenityReality\frontend\apks\launcher\build\generated\res\pngs\release
+com.SerenityReality.SeaBreathing.launcher-resValues-2 C:\Users\ileni\SerenityReality\frontend\apks\launcher\build\generated\res\resValues\release
+com.SerenityReality.SeaBreathing.launcher-rs-3 C:\Users\ileni\SerenityReality\frontend\apks\launcher\build\generated\res\rs\release
+com.SerenityReality.SeaBreathing.launcher-mergeReleaseResources-4 C:\Users\ileni\SerenityReality\frontend\apks\launcher\build\intermediates\incremental\release\mergeReleaseResources\merged.dir
+com.SerenityReality.SeaBreathing.launcher-mergeReleaseResources-5 C:\Users\ileni\SerenityReality\frontend\apks\launcher\build\intermediates\incremental\release\mergeReleaseResources\stripped.dir
+com.SerenityReality.SeaBreathing.launcher-merged_res-6 C:\Users\ileni\SerenityReality\frontend\apks\launcher\build\intermediates\merged_res\release
+com.SerenityReality.SeaBreathing.launcher-main-7 C:\Users\ileni\SerenityReality\frontend\apks\launcher\src\main\res
+com.SerenityReality.SeaBreathing.launcher-release-8 C:\Users\ileni\SerenityReality\frontend\apks\launcher\src\release\res
+com.SerenityReality.SeaBreathing.launcher-packaged_res-9 C:\Users\ileni\SerenityReality\frontend\apks\unityLibrary\build\intermediates\packaged_res\release
+com.SerenityReality.SeaBreathing.launcher-packaged_res-10 C:\Users\ileni\SerenityReality\frontend\apks\unityLibrary\xrmanifest.androidlib\build\intermediates\packaged_res\release
+>>>>>>> a436d45 (Removed seabreathing apk with wrong package name + imported SleepMeditation apk with correct package name)
+=======
+>>>>>>> d295257 (Exported all apks with correct packagenames, moved all scene info to a data.ts file, adjusted scene and pop up rating components to take package name as prop)

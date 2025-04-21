@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<<<<<<< HEAD
+<<<<<<< HEAD
+  <string name="app_name">Visualisation</string>
+=======
+  <string name="app_name">SeaBreathing</string>
+>>>>>>> a436d45 (Removed seabreathing apk with wrong package name + imported SleepMeditation apk with correct package name)
+=======
+  <string name="app_name">Visualisation</string>
+>>>>>>> d295257 (Exported all apks with correct packagenames, moved all scene info to a data.ts file, adjusted scene and pop up rating components to take package name as prop)
+  <string name="game_view_content_description">Game view</string>
+</resources>

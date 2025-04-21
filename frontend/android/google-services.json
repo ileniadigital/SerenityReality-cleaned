@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "412124305994",
+    "project_id": "serenityreality-af160",
+    "storage_bucket": "serenityreality-af160.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:412124305994:android:5a50cf3907013fd33fa4b3",
+        "android_client_info": {
+          "package_name": "com.ileniadigital.serenityreality"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_sqh1SlmBhKEKoCeadBO07pHfpRK3zw8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

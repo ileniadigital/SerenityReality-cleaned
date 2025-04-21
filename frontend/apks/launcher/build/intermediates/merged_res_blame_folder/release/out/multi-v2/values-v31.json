@@ -1,0 +1,28 @@
+{
+    "logs": [
+        {
+<<<<<<< HEAD
+<<<<<<< HEAD
+            "outputFile": "com.SerenityReality.Visualisation.launcher-mergeReleaseResources-4:/values-v31/values-v31.xml",
+=======
+            "outputFile": "com.SerenityReality.SeaBreathing.launcher-mergeReleaseResources-4:/values-v31/values-v31.xml",
+>>>>>>> a436d45 (Removed seabreathing apk with wrong package name + imported SleepMeditation apk with correct package name)
+=======
+            "outputFile": "com.SerenityReality.Visualisation.launcher-mergeReleaseResources-4:/values-v31/values-v31.xml",
+>>>>>>> d295257 (Exported all apks with correct packagenames, moved all scene info to a data.ts file, adjusted scene and pop up rating components to take package name as prop)
+            "map": [
+                {
+                    "source": "C:\\Users\\ileni\\SerenityReality\\frontend\\apks\\unityLibrary\\build\\intermediates\\packaged_res\\release\\values-v31\\values-v31.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "8",
+                        "endColumns": "10",
+                        "endOffsets": "614"
+                    }
+                }
+            ]
+        }
+    ]
+}

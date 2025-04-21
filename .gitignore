@@ -1,0 +1,67 @@
+# Ignore Unity auto-generated folders inside the "ar" directory
+/ar/Library/
+/ar/Temp/
+/ar/obj/
+/ar/Build/
+/ar/Builds/
+/ar/Logs/
+/ar/UserSettings/
+/ar/MemoryCaptures/
+/ar/Recordings/
+
+/ar/Packages/
+/ar/.vs/
+
+/ar/Assets/Plugins/*/Android/libs/
+/ar/Assets/Plugins/*/iOS/*.projmods
+
+# Ignore auto-generated Unity files
+/ar/ExportedObj/
+/ar/*.csproj
+/ar/*.unityproj
+/ar/*.sln
+/ar/*.suo
+/ar/*.tmp
+/ar/*.user
+/ar/*.userprefs
+/ar/*.pidb
+/ar/*.booproj
+/ar/*.svd
+/ar/*.pdb
+/ar/*.mdb
+/ar/*.opendb
+/ar/*.VC.db
+
+# Unity-generated meta files
+/ar/*.pidb.meta
+/ar/*.pdb.meta
+/ar/*.mdb.meta
+
+# Unity crash reports
+/ar/sysinfo.txt
+
+# Ignore builds
+/ar/*.apk
+/ar/*.aab
+/ar/*.unitypackage
+/ar/*.app
+
+# Packed Addressables
+/ar/Assets/AddressableAssetsData/*/*.bin*
+
+# Temporary auto-generated Android Assets
+/ar/Assets/StreamingAssets/aa.meta
+/ar/Assets/StreamingAssets/aa/*
+
+# Ignore Rider IDE files (if you use JetBrains Rider)
+/ar/.idea/
+/ar/*.iml
+
+# Frontend-related ignores
+/frontend/node_modules/
+/frontend/*.log
+/frontend/*.lock
+/frontend/.env
+
+*.apk
+/apks/*.apk

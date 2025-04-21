@@ -1,0 +1,34 @@
+{
+    "logs": [
+        {
+<<<<<<< HEAD
+<<<<<<< HEAD
+            "outputFile": "com.SerenityReality.Visualisation.launcher-mergeReleaseResources-4:/values-ml/values-ml.xml",
+=======
+            "outputFile": "com.SerenityReality.SeaBreathing.launcher-mergeReleaseResources-4:/values-ml/values-ml.xml",
+>>>>>>> a436d45 (Removed seabreathing apk with wrong package name + imported SleepMeditation apk with correct package name)
+=======
+            "outputFile": "com.SerenityReality.Visualisation.launcher-mergeReleaseResources-4:/values-ml/values-ml.xml",
+>>>>>>> d295257 (Exported all apks with correct packagenames, moved all scene info to a data.ts file, adjusted scene and pop up rating components to take package name as prop)
+            "map": [
+                {
+                    "source": "C:\\Users\\ileni\\.gradle\\caches\\transforms-3\\8f56f7bd0e5bdc0c456829721fdd8247\\transformed\\jetified-arcore_client\\res\\values-ml\\values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8",
+                        "startColumns": "0,0,0,0,0",
+                        "startOffsets": "190,240,289,410,537",
+                        "endColumns": "49,48,120,126,96",
+                        "endOffsets": "239,288,409,536,633"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "55,109,162,287,418",
+                        "endColumns": "53,52,124,130,100",
+                        "endOffsets": "104,157,282,413,514"
+                    }
+                }
+            ]
+        }
+    ]
+}

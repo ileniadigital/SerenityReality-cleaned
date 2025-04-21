@@ -1,0 +1,32 @@
+<dependencies>
+  <compile
+      roots="C:\Users\ileni\SerenityReality\frontend\apks@@:unityLibrary::release">
+    <dependency
+        name="C:\Users\ileni\SerenityReality\frontend\apks@@:unityLibrary::release"
+        simpleName="apks:unityLibrary"/>
+  </compile>
+  <package
+      roots="C:\Users\ileni\SerenityReality\frontend\apks@@:unityLibrary::release,__local_aars__:C:\Users\ileni\SerenityReality\frontend\apks\unityLibrary\libs\unity-classes.jar:unspecified@jar,:arcore_client:@aar,:ARPresto:@aar,:UnityARCore:@aar,:unityandroidpermissions:@aar,C:\Users\ileni\SerenityReality\frontend\apks@@:unityLibrary:xrmanifest.androidlib::release">
+    <dependency
+        name="C:\Users\ileni\SerenityReality\frontend\apks@@:unityLibrary::release"
+        simpleName="apks:unityLibrary"/>
+    <dependency
+        name="__local_aars__:C:\Users\ileni\SerenityReality\frontend\apks\unityLibrary\libs\unity-classes.jar:unspecified@jar"
+        simpleName="__local_aars__:C:\Users\ileni\SerenityReality\frontend\apks\unityLibrary\libs\unity-classes.jar"/>
+    <dependency
+        name=":arcore_client:@aar"
+        simpleName=":arcore_client"/>
+    <dependency
+        name=":ARPresto:@aar"
+        simpleName=":ARPresto"/>
+    <dependency
+        name=":UnityARCore:@aar"
+        simpleName=":UnityARCore"/>
+    <dependency
+        name=":unityandroidpermissions:@aar"
+        simpleName=":unityandroidpermissions"/>
+    <dependency
+        name="C:\Users\ileni\SerenityReality\frontend\apks@@:unityLibrary:xrmanifest.androidlib::release"
+        simpleName="apks.unityLibrary:xrmanifest.androidlib"/>
+  </package>
+</dependencies>
