@@ -1,37 +1,34 @@
 using UnityEngine;
 
-public class BackButton : MonoBehaviour
+public class BackButtonUI : MonoBehaviour
 {
     public GameObject confirmationPanel;
 
-    private bool isConfirming = false;
-
-    void Update()
+    public void OnBackButtonPressed()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        Debug.Log("Back button clicked.");
+        if (confirmationPanel != null)
         {
-            if (!isConfirming)
-            {
-                confirmationPanel.SetActive(true);
-                isConfirming = true;
-            }
-            else
-            {
-                // If back is pressed again while confirming, just close the panel
-                confirmationPanel.SetActive(false);
-                isConfirming = false;
-            }
+            confirmationPanel.SetActive(true);
+        }
+        else
+        {
+            Debug.LogError("Confirmation Panel not assigned.");
         }
     }
 
     public void ConfirmExit()
     {
+        Debug.Log("Quitting app.");
         Application.Quit();
     }
 
     public void CancelExit()
     {
-        confirmationPanel.SetActive(false);
-        isConfirming = false;
+        Debug.Log("Cancel exit.");
+        if (confirmationPanel != null)
+        {
+            confirmationPanel.SetActive(false);
+        }
     }
 }
