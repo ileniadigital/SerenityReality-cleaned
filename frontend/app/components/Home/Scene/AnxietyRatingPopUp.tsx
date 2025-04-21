@@ -4,15 +4,6 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 // import SendIntentAndroid from 'react-native-send-intent';
 import * as IntentLauncher from 'expo-intent-launcher';
 
-<<<<<<< HEAD
-// Import Unity Module
-import { NativeModules } from 'react-native';
-const { UnityLauncher } = NativeModules;
-
-
-export default function AnxietyRatingPopUp({ modalVisible, setModalVisible }: { modalVisible: boolean, setModalVisible: React.Dispatch<React.SetStateAction<boolean>> }) {
-=======
->>>>>>> d295257 (Exported all apks with correct packagenames, moved all scene info to a data.ts file, adjusted scene and pop up rating components to take package name as prop)
 
 interface AnxietyRatingPopUpProps {
     modalVisible: boolean,
@@ -66,18 +57,14 @@ export default function AnxietyRatingPopUp({ modalVisible, setModalVisible, pack
                     </View>
                     {/* Button to play scene */}
                     <View style={styles.playContainer}>
-<<<<<<< HEAD
-                        <TouchableOpacity style={styles.playButton} onPress={() => UnityLauncher.launchUnityScene("SeaBreathing")}>
-=======
                         <TouchableOpacity style={styles.playButton} onPress={launchUnityScene}>
->>>>>>> 0a31623 (It works!: App bundled and added function for press button. Bug: error when loading app)
                             <FontAwesome name="play-circle-o" size={55} color="#f5f5f5" />
                             <Text style={styles.buttonText}>Start Scene</Text>
                         </TouchableOpacity>
                     </View>
-                </View>
-            </View>
-        </Modal>
+                </View >
+            </View >
+        </Modal >
     );
 }
 
