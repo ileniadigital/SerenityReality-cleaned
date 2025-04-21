@@ -65,3 +65,14 @@
 
 *.apk
 /apks/*.apk
+/apk/Library/
+/frontend/apks/launcher/build/intermediates/apk_ide_redirect_file/release
+/frontend/apks/launcher/build/intermediates
+/frontend/apks
+/frontend/apks/launcher/build
+/frontend/apks/launcher/build/intermediates/compile_and_runtime_not_namespaced_r_class_jar
+/frontend/apks/launcher/build
+/frontend/apks/unityLibrary
+/frontend/apks
+/frontend/apks/unityLibrary
+/frontend/apks/unityLibrary/build/il2cpp_arm64-v8a_Release
