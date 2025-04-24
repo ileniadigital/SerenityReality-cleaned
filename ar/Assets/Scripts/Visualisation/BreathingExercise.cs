@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class BreathingExercise : MonoBehaviour
 {
     [SerializeField] private Image breathingCircle;
-    [SerializeField] private TextMeshProUGUI breathText; // Text inside the circle
+    [SerializeField] private TextMeshProUGUI breathText;
     [SerializeField] private float inhaleTime = 5f;
     [SerializeField] private float holdTime = 5f;
     [SerializeField] private float exhaleTime = 5f;
@@ -14,7 +14,9 @@ public class BreathingExercise : MonoBehaviour
     [SerializeField] private Vector3 maxScale = new Vector3(3f, 3f, 3f);
 
     private bool breathingStarted = false;
-    private bool isSecondRound = false;
+    private bool isBreathing = false;
+    private Coroutine breathingLoop;
+
     private void Start()
     {
         breathingCircle.gameObject.SetActive(false);
@@ -23,41 +25,43 @@ public class BreathingExercise : MonoBehaviour
 
     public void StartBreathing()
     {
-        if (!breathingStarted ||isSecondRound) {
+        if (!breathingStarted)
+        {
             breathingStarted = true;
+            isBreathing = true;
+
             breathingCircle.gameObject.SetActive(true);
             breathText.gameObject.SetActive(true);
 
-            // Start animation
-            StartCoroutine(BreathingRoutine());
+            breathingLoop = StartCoroutine(BreathingRoutine());
         }
+    }
+
+    public void StopBreathing()
+    {
+        isBreathing = false;
+
+        if (breathingLoop != null)
+        {
+            StopCoroutine(breathingLoop);
+        }
+
+        breathingCircle.gameObject.SetActive(false);
+        breathText.gameObject.SetActive(false);
     }
 
     private IEnumerator BreathingRoutine()
     {
-        for (int i=0; i<2; i++)
+        while (isBreathing)
         {
-            yield return StartCoroutine(BreathingCyle());
-            // Hold
-            yield return UpdateBreathPhase("Hold", minScale, minScale, holdTime);
+            yield return StartCoroutine(BreathingCycle());
         }
-        // Separate cycle so it does not hold at the end after the last exhale
-        yield return StartCoroutine(BreathingCyle());
-
-        breathingCircle.gameObject.SetActive(false);
-        breathText.gameObject.SetActive(false);
-
-        isSecondRound = true;
     }
 
-    private IEnumerator BreathingCyle()
+    private IEnumerator BreathingCycle()
     {
         yield return UpdateBreathPhase("Inhale", minScale, maxScale, inhaleTime);
-
-        // Hold
         yield return UpdateBreathPhase("Hold", maxScale, maxScale, holdTime);
-
-        // Exhale
         yield return UpdateBreathPhase("Exhale", maxScale, minScale, exhaleTime);
     }
 
@@ -66,17 +70,13 @@ public class BreathingExercise : MonoBehaviour
         float elapsedTime = 0f;
         while (elapsedTime < duration)
         {
-            // Update text inside the circle
             int timeLeft = Mathf.CeilToInt(duration - elapsedTime);
             breathText.text = $"{phase}\n{timeLeft}";
-
-            // Animate the circle size
             breathingCircle.rectTransform.localScale = Vector3.Lerp(startScale, endScale, elapsedTime / duration);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        // Ensure final values match exactly
         breathText.text = $"{phase}\n1";
         breathingCircle.rectTransform.localScale = endScale;
         yield return new WaitForSeconds(1f);

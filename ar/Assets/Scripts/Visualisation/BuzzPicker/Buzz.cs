@@ -24,4 +24,9 @@ public class Buzz : MonoBehaviour
         buzzSpeed = speed;
         isBuzz = speed > 0;
     }
+
+    public float GetBuzzSpeed() 
+    {
+        return buzzSpeed;
+    }
 }

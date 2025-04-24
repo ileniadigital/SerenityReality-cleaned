@@ -93,12 +93,51 @@ public class BuzzControl : MonoBehaviour
         }
     }
 
+    // Slow down the buzzing speed of the object during breathing
+    private IEnumerator SlowDownBuzz(float duration)
+    {
+        float elapsed = 0f;
+        float initialSpeed = Buzz.GetBuzzSpeed();
+        float targetSpeed = 0.05f; // Minimal speed (or zero if you prefer)
+
+        while (elapsed < duration)
+        {
+            float t = elapsed / duration;
+            float newSpeed = Mathf.Lerp(initialSpeed, targetSpeed, t);
+            Buzz.SetBuzzSpeed(newSpeed);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // Final slowing down
+        Buzz.SetBuzzSpeed(targetSpeed);
+    }
+
+    // Follow the breathing exercise and slow down object
     private IEnumerator StartBreathingExercise()
     {
         yield return new WaitForSeconds(1f);
+
+        breathingExercise.gameObject.SetActive(true);
         breathingExercise.StartBreathing();
-        yield return new WaitForSeconds(67f);
-        isSecondBuzz = true;
-        ShowBuzzUI();
+
+        if (Buzz != null)
+            StartCoroutine(SlowDownBuzz(30f));
+
+        yield return new WaitForSeconds(67f); // Duration of breathing exercise
+
+        breathingExercise.StopBreathing();
+
+        if (instructionText != null)
+        {
+            instructionText.instructionText.text = "Well done for visualising your anxiety.";
+        }
+
+        yield return new WaitForSeconds(5f);
+
+        Application.Quit();
     }
+
+
+
 }
