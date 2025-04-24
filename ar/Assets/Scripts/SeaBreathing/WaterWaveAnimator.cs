@@ -17,6 +17,8 @@ public class WaterWaveAnimator : MonoBehaviour, IBreathingController
     [Header("Guiding text")]
     public TextMeshProUGUI instructionText;
     private string currentDisplayedText = "";
+    private string currentPhaseLabel = "";
+    private string lastCountdown = "";
 
     private Vector3 startPosition;
     private float timer;
@@ -119,17 +121,31 @@ public class WaterWaveAnimator : MonoBehaviour, IBreathingController
             remainingTime = exhaleDuration - timer;
         }
 
-        string newText = $"{label}\n{Mathf.Ceil(remainingTime)}";
-
-        // Only update if the text has changed
-        if (currentDisplayedText != newText)
+        string countdownText = Mathf.Ceil(remainingTime).ToString();
+        // Fade to new label after each phase ends
+        if (label != currentPhaseLabel)
         {
-            currentDisplayedText = newText;
+            currentPhaseLabel = label;
 
+            // Animate text
             if (textAnimator != null)
-                textAnimator.FadeToText(newText);
+            {
+                textAnimator.FadeToText($"{label}\n{countdownText}");
+            }
+            // If no animator is available, simply set text
             else
-                instructionText.text = newText;
+            {
+                instructionText.text = $"{label}\n{countdownText}";
+            }
+        }
+        else
+        {
+            // Update countdown only
+            if (lastCountdown != countdownText) { 
+                lastCountdown = countdownText;
+                // Set text directly
+                instructionText.text= $"{currentPhaseLabel}\n{lastCountdown}";
+            }
         }
     }
 
