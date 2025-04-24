@@ -16,17 +16,22 @@ public class WaterWaveAnimator : MonoBehaviour, IBreathingController
 
     [Header("Guiding text")]
     public TextMeshProUGUI instructionText;
+    private string currentDisplayedText = "";
 
     private Vector3 startPosition;
     private float timer;
     private int phase = 0;
     private Boolean isPaused = false;
+    public TextAnimator textAnimator;
 
     void Start()
     {
         startPosition = transform.position;
         if (instructionText == null) {
             instructionText = GameObject.FindObjectOfType<TextMeshProUGUI>();
+        }
+        if (textAnimator == null) { 
+            textAnimator= instructionText.GetComponent<TextAnimator>();
         }
         BreathingExercise();
     }
@@ -53,11 +58,11 @@ public class WaterWaveAnimator : MonoBehaviour, IBreathingController
         switch (phase)
         {
             case 0: // Inhale
-                MoveWater(inhaleDistance, inhaleDuration);
                 BreathingExercise();
+                MoveWater(inhaleDistance, inhaleDuration);
                 if (timer >= inhaleDuration)
                 {
-                    timer = 0;
+                    timer = 0f;
                     phase = 1;
                 }
                 break;
@@ -66,17 +71,17 @@ public class WaterWaveAnimator : MonoBehaviour, IBreathingController
                 BreathingExercise();
                 if (timer >= holdDuration)
                 {
-                    timer = 0;
+                    timer = 0f;
                     phase = 2;
                 }
                 break;
 
             case 2: // Exhale
-                MoveWater(-exhaleDistance, exhaleDuration);
                 BreathingExercise();
+                MoveWater(-exhaleDistance, exhaleDuration);
                 if (timer >= exhaleDuration)
                 {
-                    timer = 0;
+                    timer = 0f;
                     phase = 0;
                     // Communicate breathing cycle is finished to show prompt if 2 minutes have passed
                     BreathingManager.Instance?.NotifyExhaleComplete(); 
@@ -95,20 +100,37 @@ public class WaterWaveAnimator : MonoBehaviour, IBreathingController
     // Change breathing exercise text based on the phase
     void BreathingExercise()
     {
-        if (phase == 0) // Inhale
+        string label = "";
+        float remainingTime = 0f;
+
+        if (phase == 0)
         {
-            float remainingTime = inhaleDuration - timer;
-            instructionText.text = "Inhale\n " + Mathf.Ceil(remainingTime).ToString();
+            label = "Inhale";
+            remainingTime = inhaleDuration - timer;
         }
-        else if (phase == 1) // Hold
+        else if (phase == 1)
         {
-            float remainingTime = holdDuration - timer;
-            instructionText.text = "Hold\n " + Mathf.Ceil(remainingTime).ToString();
+            label = "Hold";
+            remainingTime = holdDuration - timer;
         }
-        else if (phase == 2) // Exhale
+        else if (phase == 2)
         {
-            float remainingTime = exhaleDuration - timer;
-            instructionText.text = "Exhale\n " + Mathf.Ceil(remainingTime).ToString();
+            label = "Exhale";
+            remainingTime = exhaleDuration - timer;
+        }
+
+        string newText = $"{label}\n{Mathf.Ceil(remainingTime)}";
+
+        // Only update if the text has changed
+        if (currentDisplayedText != newText)
+        {
+            currentDisplayedText = newText;
+
+            if (textAnimator != null)
+                textAnimator.FadeToText(newText);
+            else
+                instructionText.text = newText;
         }
     }
+
 }
