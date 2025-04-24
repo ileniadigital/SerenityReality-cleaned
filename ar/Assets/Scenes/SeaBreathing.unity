@@ -151,7 +151,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a35208cd0d38bde49975d7916a5b1464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  confirmationPanel: {fileID: 1652191721}
+  messagePanel: {fileID: 1652191721}
+  exitTimeout: 2
 --- !u!4 &119538969
 Transform:
   m_ObjectHideFlags: 0
@@ -1485,51 +1486,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 944738022}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &961714106
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 961714108}
-  - component: {fileID: 961714107}
-  m_Layer: 0
-  m_Name: ExitGesture
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &961714107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 961714106}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0abee6ce5ab72284090466360f39854b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  confirmationPanel: {fileID: 1652191721}
---- !u!4 &961714108
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 961714106}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 330.34195, y: 337.01624, z: -5.3685474}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1066058691
 GameObject:
   m_ObjectHideFlags: 0
@@ -2460,6 +2416,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: PhoneBackButton, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 8752778973322969929, guid: de9ced92729345844b4657108b371c65,
+        type: 3}
+      propertyPath: m_text
+      value: 'Are you sure you want to exit?
+
+        Press the back button again
+        to leave.
+
+        Hold the button to close this menu'
+      objectReference: {fileID: 0}
     - target: {fileID: 9081977536595981647, guid: de9ced92729345844b4657108b371c65,
         type: 3}
       propertyPath: m_Pivot.x
@@ -2971,5 +2937,4 @@ SceneRoots:
   - {fileID: 436302226}
   - {fileID: 520570600}
   - {fileID: 1821474334}
-  - {fileID: 961714108}
   - {fileID: 119538969}
