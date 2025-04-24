@@ -45,7 +45,7 @@ export default function AnxietyRatingPopUp({ modalVisible, setModalVisible, pack
                         <FontAwesome name="close" size={24} color="black" />
                     </TouchableOpacity>
                     <Text style={styles.modalText}>How anxious or stressed are you feeling right now?</Text>
-                    {/* Buttons from 1 to 10 */}
+                    {/* Buttons from 1 to 5 */}
                     <View style={styles.buttonContainer}>
                         {[...Array(5)].map((_, index) => (
                             <TouchableOpacity
