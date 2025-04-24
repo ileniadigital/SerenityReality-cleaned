@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import PlayButton from './PlayButton';
 import AnxietyRatingPopUp from './AnxietyRatingPopUp';
 
+// Get screen dimensions for width
+const { width } = Dimensions.get('window');
 
 // Data for scenes
 interface Scene {
@@ -13,7 +15,7 @@ interface Scene {
 
 export default function Scene({ title, description, packageName }: { title: string, description: string, packageName: string }) {
     const [modalVisible, setModalVisible] = useState(false);
-    const [selectedRating, setSelectedRating] = useState<number | null>(null);
+    // const [selectedRating, setSelectedRating] = useState<number | null>(null);
 
     return (
         <View style={styles.container}>
@@ -29,14 +31,15 @@ export default function Scene({ title, description, packageName }: { title: stri
 
 const styles = StyleSheet.create({
     container: {
+        width: width * 0.9, // 90% of screen width
         flexDirection: 'row',
         backgroundColor: "#F5F5F5",
-        justifyContent: "flex-start",
-        alignItems: "flex-start",
+        justifyContent: "center",
+        alignItems: "center",
         padding: 15,
         margin: 10,
         borderRadius: 10,
-        // Shadow
+        overflow: "hidden",
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.5,
@@ -45,6 +48,7 @@ const styles = StyleSheet.create({
         elevation: 5,
     },
     textContainer: {
+        width: "80%",
         marginLeft: 10,
         alignItems: "center",
     },
@@ -57,5 +61,6 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: "#000000",
         textAlign: "center",
+        flexWrap: "wrap",
     }
 });

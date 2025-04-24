@@ -3,19 +3,19 @@ const scenes = [
     { 
       id: '1',
       title: 'Sea Breathing',
-      description: 'Calm ocean experience',
+      description: 'Follow the sea waves to breathe: stay as long as you need!',
       packageName: 'com.SerenityReality.SeaBreathing' 
     },
     { 
       id: '2', 
       title: 'Sleep Meditation', 
-      description: 'Guided sleep session',
+      description: 'Struggling to sleep? Breathe with the stars as long as you need!',
       packageName: 'com.SerenityReality.SleepMeditation'
     },
     {
         id: '3',
         title: 'Visualise your anxiety',
-        description: 'Visualise your anxiety',
+        description: 'Imagine your anxiety as a physical object and breathe with it.',
         packageName: 'com.SerenityReality.Visualisation'
     }
   ];
