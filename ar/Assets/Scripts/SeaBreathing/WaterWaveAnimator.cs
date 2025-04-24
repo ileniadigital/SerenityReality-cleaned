@@ -61,6 +61,7 @@ public class WaterWaveAnimator : MonoBehaviour
                 {
                     timer = 0;
                     phase = 0;
+                    BreathingManager.Instance?.NotifyExhaleComplete(); // Notify of complete exhale so it can prompt the user every two minutes
                 }
                 break;
         }
