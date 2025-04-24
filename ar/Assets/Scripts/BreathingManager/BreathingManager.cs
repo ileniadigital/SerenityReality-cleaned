@@ -3,6 +3,7 @@ using UnityEngine;
 public class BreathingManager : MonoBehaviour
 {
     public static BreathingManager Instance;
+    private IBreathingController controller;
 
     public GameObject anxietyPopupPanel;
     public float checkInterval = 120f; // every 2 minutes
@@ -22,6 +23,11 @@ public class BreathingManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    // Find Breathing contoller to pause breathing when showing prompt
+    void FindController()
+    {
+        controller = FindObjectOfType<MonoBehaviour>() as IBreathingController;
+    }
     void Update()
     {
         timer += Time.deltaTime;
@@ -43,20 +49,25 @@ public class BreathingManager : MonoBehaviour
         }
     }
 
+    // Show anxiety rating pop up
     void ShowPrompt()
     {
-        Debug.Log("Prompting user to rate anxiety.");
+        Debug.Log("Prompting user to rate anxiety");
         if (anxietyPopupPanel != null)
         {
             anxietyPopupPanel.SetActive(true);
+            FindController();
+            controller?.PauseBreathing();
         }
     }
 
+    // Close anxiety rating prompt if user dismisses it
     public void DismissPrompt()
     {
         if (anxietyPopupPanel != null)
         {
             anxietyPopupPanel.SetActive(false);
+            controller?.ResumeBreathing();
         }
     }
 }

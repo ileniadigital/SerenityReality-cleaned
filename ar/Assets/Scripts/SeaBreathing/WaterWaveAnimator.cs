@@ -1,7 +1,8 @@
 using UnityEngine;
 using TMPro;
+using System;
 
-public class WaterWaveAnimator : MonoBehaviour
+public class WaterWaveAnimator : MonoBehaviour, IBreathingController
 {
     [Header("Wave Movement")]
     public float inhaleDistance = 1f;  // Moves the water forward
@@ -19,6 +20,7 @@ public class WaterWaveAnimator : MonoBehaviour
     private Vector3 startPosition;
     private float timer;
     private int phase = 0;
+    private Boolean isPaused = false;
 
     void Start()
     {
@@ -29,8 +31,23 @@ public class WaterWaveAnimator : MonoBehaviour
         BreathingExercise();
     }
 
+    // Pause breathing when pop up is shown
+    public void PauseBreathing()
+    {
+        isPaused = true;
+    }
+
+    // Resume breathing when pop up is dismissed
+    public void ResumeBreathing() {
+        isPaused = false;
+    }
+
     void Update()
     {
+        // Pause breathing exercise is pop up is shown
+        if (isPaused) return;
+
+        // Breathing exercise logic
         timer += Time.deltaTime;
 
         switch (phase)
@@ -61,18 +78,21 @@ public class WaterWaveAnimator : MonoBehaviour
                 {
                     timer = 0;
                     phase = 0;
-                    BreathingManager.Instance?.NotifyExhaleComplete(); // Notify of complete exhale so it can prompt the user every two minutes
+                    // Communicate breathing cycle is finished to show prompt if 2 minutes have passed
+                    BreathingManager.Instance?.NotifyExhaleComplete(); 
                 }
                 break;
         }
     }
 
+    // Move the water asset based on breathing times
     void MoveWater(float distance, float duration)
     {
         float moveStep = (distance / duration) * Time.deltaTime * moveSpeed;
         transform.position = new Vector3(startPosition.x, startPosition.y, transform.position.z + moveStep);
     }
 
+    // Change breathing exercise text based on the phase
     void BreathingExercise()
     {
         if (phase == 0) // Inhale
