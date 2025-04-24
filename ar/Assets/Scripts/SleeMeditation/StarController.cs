@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 
-public class StarSpawner : MonoBehaviour, IBreathingController
+public class StarSpawner : MonoBehaviour
 {
     public GameObject starPrefab;
     public RectTransform canvasTransform;
@@ -14,10 +14,8 @@ public class StarSpawner : MonoBehaviour, IBreathingController
     private List<Vector2> existingStars = new List<Vector2>(); // Store placed stars
     private float minDistance = 100f; // Minimum distance between stars
 
-    private float promptTimer = 0f;
-    private float promptInterval = 120f;
-    private bool isPromptReady = false;
-    private bool isPaused = true;
+    private int breathCounter = 0;
+    private int BreathsBeforePopUp = 6;
 
     private TextAnimator textAnimator;
 
@@ -25,36 +23,6 @@ public class StarSpawner : MonoBehaviour, IBreathingController
     {
         spawnButton.onClick.RemoveAllListeners();
         spawnButton.onClick.AddListener(SpawnStar);
-
-        StartCoroutine(CheckInTimer());
-    }
-
-    // Pause breathing when pop up is shown
-    public void PauseBreathing()
-    {
-        isPaused = true;
-    }
-
-    // Resume breathing when pop up is dismissed
-    public void ResumeBreathing()
-    {
-        isPaused = false;
-    }
-
-    IEnumerator CheckInTimer()
-    {
-        while (true)
-        { 
-            yield return new WaitForSeconds(promptInterval);
-
-            // Wait till the end of the breathing cycle
-            while (spawnButton.interactable == false)
-            {
-                yield return null;
-            }
-            BreathingManager.Instance?.NotifyExhaleComplete();
-        }
-
     }
 
     // Create a star at random on the screen
@@ -112,15 +80,19 @@ public class StarSpawner : MonoBehaviour, IBreathingController
             starImage.color = new Color(brightness, brightness, brightness, 1f);
             yield return new WaitForSeconds(1f);
         }
-        // Notify breathing cycle is finished
-        if (isPromptReady) {
-            BreathingManager.Instance?.NotifyExhaleComplete();
-            isPromptReady = false;
-            promptTimer = 0f;
-        }
-        
+
         instructionText.text = "Place another star";
         spawnButton.interactable = true;
+
+        breathCounter++; // Increase number of breaths before showing pop up
+        Debug.Log($"[Breath] Completed {breathCounter} breath(s)");
+
+        if (breathCounter >= BreathsBeforePopUp)
+        {
+            Debug.Log("[Breath] Triggering popup via NotifyExhaleComplete()");
+            BreathingManager.Instance?.NotifyExhaleComplete();
+            breathCounter = 0;
+        }
     }
 
     // Generate random position for the star

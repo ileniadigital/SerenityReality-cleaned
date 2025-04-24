@@ -41,11 +41,15 @@ public class BreathingManager : MonoBehaviour
     // Called by breathing script after exhale completes
     public void NotifyExhaleComplete()
     {
+        Debug.Log("[Popup] NotifyExhaleComplete called");
         if (isWaitingToPrompt)
         {
             ShowPrompt();
             isWaitingToPrompt = false;
             timer = 0f;
+        }
+        else {
+            Debug.LogWarning("[Popup] Panel is null!");
         }
     }
 
