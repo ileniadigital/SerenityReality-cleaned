@@ -3,6 +3,9 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 
+/*
+ * BuzzControl class handles buzzing animation of the object
+ */
 public class BuzzControl : MonoBehaviour
 {
     [SerializeField] private Slider buzzSpeedSlider;
@@ -14,11 +17,7 @@ public class BuzzControl : MonoBehaviour
     //[SerializeField] private PinchToResize pinchToResize;
 
     private Buzz buzzObject;
-    private Buzz buzz;
     private bool isSecondBuzz = false;
-
-    private Buzz Buzz; // This will be assigned dynamically
-
     private void Start()
     {
         buzzUI.SetActive(false);
@@ -33,14 +32,14 @@ public class BuzzControl : MonoBehaviour
 
     public void SetBuzzObject(GameObject newObject)
     {
-        Buzz = newObject.GetComponent<Buzz>();
+        buzzObject = newObject.GetComponent<Buzz>();
     }
 
     private void UpdateBuzzSpeed(float speed)
     {
-        if (Buzz != null)
+        if (buzzObject != null)
         {
-            Buzz.SetBuzzSpeed(speed);
+            buzzObject.SetBuzzSpeed(speed);
         }
 
         if (speedText != null)
@@ -97,42 +96,45 @@ public class BuzzControl : MonoBehaviour
     private IEnumerator SlowDownBuzz(float duration)
     {
         float elapsed = 0f;
-        float initialSpeed = Buzz.GetBuzzSpeed();
-        float targetSpeed = 0.05f; // Minimal speed (or zero if you prefer)
+        float initialSpeed = buzzObject.GetBuzzSpeed(); // Get initial speed
+        float targetSpeed = 0f; // Minimal speed
 
         while (elapsed < duration)
         {
             float t = elapsed / duration;
+            // Calculate rate of slowing down
             float newSpeed = Mathf.Lerp(initialSpeed, targetSpeed, t);
-            Buzz.SetBuzzSpeed(newSpeed);
+            buzzObject.SetBuzzSpeed(newSpeed); // Set new speed
             elapsed += Time.deltaTime;
             yield return null;
         }
 
-        // Final slowing down
-        Buzz.SetBuzzSpeed(targetSpeed);
+        // Stop buzzing
+        buzzObject.SetBuzzSpeed(targetSpeed);
     }
 
     // Follow the breathing exercise and slow down object
     private IEnumerator StartBreathingExercise()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1f); // wait 1 second
 
+        // Start breathing exercise
         breathingExercise.gameObject.SetActive(true);
         breathingExercise.StartBreathing();
 
-        if (Buzz != null)
-            StartCoroutine(SlowDownBuzz(30f));
+        // Slow down buzzing
+        if (buzzObject != null)
+            StartCoroutine(SlowDownBuzz(35f));
 
-        yield return new WaitForSeconds(67f); // Duration of breathing exercise
+        yield return new WaitForSeconds(50f); // Duration of breathing exercise + 10
 
-        breathingExercise.StopBreathing();
-
+        // Set congratulatory text
         if (instructionText != null)
         {
             instructionText.instructionText.text = "Well done for visualising your anxiety.";
         }
 
+        // Wait 5 seconds then quit
         yield return new WaitForSeconds(5f);
 
         Application.Quit();

@@ -37,6 +37,7 @@ public class BreathingExercise : MonoBehaviour
         }
     }
 
+    // Stop breathing exercise
     public void StopBreathing()
     {
         isBreathing = false;
@@ -50,14 +51,20 @@ public class BreathingExercise : MonoBehaviour
         breathText.gameObject.SetActive(false);
     }
 
+    // Start breathing exercises
     private IEnumerator BreathingRoutine()
     {
-        while (isBreathing)
+        int breaths = 0; // Count breaths
+        while (breaths<3)
         {
             yield return StartCoroutine(BreathingCycle());
+            breaths++;
         }
+        // Stop after 3 breaths
+        StopBreathing();
     }
 
+    // Breathing Cycle animation and text
     private IEnumerator BreathingCycle()
     {
         yield return UpdateBreathPhase("Inhale", minScale, maxScale, inhaleTime);
@@ -65,14 +72,15 @@ public class BreathingExercise : MonoBehaviour
         yield return UpdateBreathPhase("Exhale", maxScale, minScale, exhaleTime);
     }
 
+    // Update breathing animation and text
     private IEnumerator UpdateBreathPhase(string phase, Vector3 startScale, Vector3 endScale, float duration)
     {
-        float elapsedTime = 0f;
+        float elapsedTime = 0f; // initial time
         while (elapsedTime < duration)
         {
             int timeLeft = Mathf.CeilToInt(duration - elapsedTime);
-            breathText.text = $"{phase}\n{timeLeft}";
-            breathingCircle.rectTransform.localScale = Vector3.Lerp(startScale, endScale, elapsedTime / duration);
+            breathText.text = $"{phase}\n{timeLeft}"; // Chnage text
+            breathingCircle.rectTransform.localScale = Vector3.Lerp(startScale, endScale, elapsedTime / duration); // Transform breathing circle
             elapsedTime += Time.deltaTime;
             yield return null;
         }

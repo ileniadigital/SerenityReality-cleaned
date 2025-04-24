@@ -15,7 +15,8 @@ public class Buzz : MonoBehaviour
     {
         if (isBuzz)
         {
-            transform.position = originalPosition + Random.insideUnitSphere * buzzSpeed * 0.01f;
+            Vector3 buzzOffset= Random.insideUnitSphere * buzzSpeed *0.01f;
+            transform.position = originalPosition + buzzOffset;
         }
     }
 
