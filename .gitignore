@@ -76,3 +76,6 @@
 /frontend/apks
 /frontend/apks/unityLibrary
 /frontend/apks/unityLibrary/build/il2cpp_arm64-v8a_Release
+
+/frontend/android
+/frontend/ios

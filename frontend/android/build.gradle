@@ -7,6 +7,7 @@ buildscript {
         compileSdkVersion = Integer.parseInt(findProperty('android.compileSdkVersion') ?: '35')
         targetSdkVersion = Integer.parseInt(findProperty('android.targetSdkVersion') ?: '34')
         kotlinVersion = findProperty('android.kotlinVersion') ?: '1.9.25'
+        playServicesVersion = "21.0.1"
         // googlePlayServicesVersion = findProperty('android.googlePlayServicesVersion') ?: '18.1.0'
         // firebaseVersion = findProperty('android.firebaseVersion') ?: '32.2.0'
 
@@ -40,5 +41,19 @@ allprojects {
         google()
         mavenCentral()
         maven { url 'https://www.jitpack.io' }
+    }
+}
+subprojects {
+    afterEvaluate { project ->
+        project.configurations.all { configuration ->
+            configuration.resolutionStrategy.eachDependency { details ->
+                if (details.requested.group == 'com.google.android.gms') {
+                    details.useVersion "21.0.1"
+                }
+                if (details.requested.group == 'com.google.firebase') {
+                    details.useVersion "21.0.1"
+                }
+            }
+        }
     }
 }
