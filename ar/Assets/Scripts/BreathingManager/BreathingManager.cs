@@ -1,17 +1,21 @@
+// BreathingManager handles the breathing exercise and prompts the user to rate their anxiety level after a set interval.
+//
+// It must assigned to a GameObject in the Unity scene, and the anxietyPopupPanel object must be assigned in the Unity Inspector.
 using UnityEngine;
 
 public class BreathingManager : MonoBehaviour
 {
-    public static BreathingManager Instance;
-    private IBreathingController controller;
+    public static BreathingManager Instance; // Singleton instance
+    private IBreathingController controller; // Breathing controller
 
-    public GameObject anxietyPopupPanel;
+    public GameObject anxietyPopupPanel; // Anxiety panel to be assigned in the Inspector
     public float checkInterval = 120f; // every 2 minutes
 
-    private float timer = 0f;
-    private bool isWaitingToPrompt = false;
+    private float timer = 0f; // Timer to track the interval
+    private bool isWaitingToPrompt = false; // Flag to check if we are waiting to prompt the user
 
     void Awake()
+    // Singleton pattern to ensure only one instance of BreathingManager exists
     {
         if (Instance != null && Instance != this)
         {
@@ -28,7 +32,9 @@ public class BreathingManager : MonoBehaviour
     {
         controller = FindObjectOfType<MonoBehaviour>() as IBreathingController;
     }
+
     void Update()
+    // Update timer each frame and check if we need to prompt the user
     {
         timer += Time.deltaTime;
 
@@ -48,7 +54,8 @@ public class BreathingManager : MonoBehaviour
             isWaitingToPrompt = false;
             timer = 0f;
         }
-        else {
+        else
+        {
             Debug.LogWarning("[Popup] Panel is null!");
         }
     }
