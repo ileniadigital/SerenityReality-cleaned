@@ -1,3 +1,4 @@
+// Shows anxiety pop-up before launching the AR experience
 import React from 'react';
 import { View, Text, StyleSheet, Modal, TouchableOpacity, Alert } from 'react-native';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
@@ -5,6 +6,7 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import * as IntentLauncher from 'expo-intent-launcher';
 
 
+// Define the props for the AnxietyRatingPopUp component
 interface AnxietyRatingPopUpProps {
     modalVisible: boolean,
     setModalVisible: React.Dispatch<React.SetStateAction<boolean>>,
@@ -14,14 +16,18 @@ interface AnxietyRatingPopUpProps {
 
 export default function AnxietyRatingPopUp({ modalVisible, setModalVisible, packageName }: { modalVisible: boolean, setModalVisible: React.Dispatch<React.SetStateAction<boolean>>, packageName: string }) {
 
+    // Function to launch the Unity scene
     const launchUnityScene = async () => {
+        // Set the modal to visible
         setModalVisible(false);
+        // Check if the package name is provided and launch the scene
         try {
             await IntentLauncher.startActivityAsync('android.intent.action.MAIN', {
                 packageName: packageName,
                 className: 'com.unity3d.player.UnityPlayerActivity',
             });
         } catch (error) {
+            // If there is an error, show an alert
             Alert.alert(
                 'Error',
                 'Could not launch the AR experience. Please make sure the app is installed.',
@@ -31,6 +37,7 @@ export default function AnxietyRatingPopUp({ modalVisible, setModalVisible, pack
     };
 
     return (
+        // Modal for the anxiety rating pop-up
         <Modal
             animationType="slide"
             transparent={true}
@@ -39,11 +46,14 @@ export default function AnxietyRatingPopUp({ modalVisible, setModalVisible, pack
                 setModalVisible(!modalVisible);
             }}
         >
+            {/* Modal content */}
             <View style={styles.modalContainer}>
                 <View style={styles.modalView}>
+                    {/* Close button */}
                     <TouchableOpacity style={styles.closeButton} onPress={() => setModalVisible(!modalVisible)}>
                         <FontAwesome name="close" size={24} color="black" />
                     </TouchableOpacity>
+                    {/* Modal text asking for anxiety rating */}
                     <Text style={styles.modalText}>How anxious or stressed are you feeling right now?</Text>
                     {/* Buttons from 1 to 5 */}
                     <View style={styles.buttonContainer}>

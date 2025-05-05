@@ -1,3 +1,4 @@
+// The play button that opens the modal to open the AR scene
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import FontAwesome from '@expo/vector-icons/FontAwesome';

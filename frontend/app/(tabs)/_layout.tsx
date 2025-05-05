@@ -1,3 +1,4 @@
+// Create a tab layout for the app using Expo Router and React Navigation.
 import { Tabs } from 'expo-router';
 import Header from '../components/Header';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -5,7 +6,7 @@ import React from 'react';
 import { UserProvider, useUser } from '@/contexts/UserContext';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
-// Icons
+// Icons setting for the navigation
 const ICON_SIZE = 30;
 const homeIcon = ({ color }: { color: string }) => <MaterialIcons name="home" color={color} size={ICON_SIZE} />;
 const aboutIcon = ({ color }: { color: string }) => <MaterialIcons name="info" color={color} size={ICON_SIZE} />;
@@ -25,6 +26,7 @@ export default function TabLayout() {
                         tabBarActiveTintColor: '#B1D699',
                         tabBarInactiveTintColor: '#000000',
                     }}>
+                    {/* Screens on the navigation bar */}
                     <Tabs.Screen name="index" options={{ headerShown: false, tabBarLabel: 'Home', tabBarIcon: homeIcon }} />
                     <Tabs.Screen name="prompts" options={{ headerShown: false, tabBarLabel: 'Prompts', tabBarIcon: promptIcon }} />
                     <Tabs.Screen name="about" options={{ headerShown: false, tabBarLabel: 'About', tabBarIcon: aboutIcon }} />

@@ -1,3 +1,5 @@
+// Mood rating component for the home screen of the app
+// Only for visual representation, no functionality
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';

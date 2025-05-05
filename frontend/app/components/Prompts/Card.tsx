@@ -1,3 +1,4 @@
+/// Card component for displaying prompts, text passed through props
 import React from 'react';
 import { View, Text, StyleSheet, Dimensions } from 'react-native';
 

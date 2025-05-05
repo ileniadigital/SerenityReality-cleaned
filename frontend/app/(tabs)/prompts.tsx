@@ -1,3 +1,4 @@
+// This is the prompt pages with the anxiety prompts
 import React, { useRef } from 'react';
 import { View, Text, StyleSheet, FlatList, } from 'react-native';
 import Card from '../components/Prompts/Card';

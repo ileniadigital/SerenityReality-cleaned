@@ -1,25 +1,29 @@
+// This is the component for the action button used in the account page
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { ActionButtonProps } from '../../../data/interfaces';
 
 export const ActionButton: React.FC<ActionButtonProps> = ({
+    // Props
     title,
     onPress,
     disabled = false,
     variant = 'primary'
 }) => {
+    // Styles based on the variant prop
     const buttonStyles = [
         styles.actionButton,
         variant === 'login' && styles.loginButton,
         variant === 'signOut' && styles.signOutButton,
         variant === 'link' && styles.linkButton,
     ];
-
+    // Text styles based on the variant prop
     const textStyles = [
         variant !== 'link' ? styles.buttonText : styles.linkText,
     ];
 
     return (
+        // Custom button
         <TouchableOpacity
             style={buttonStyles}
             onPress={onPress}

@@ -1,8 +1,10 @@
+// This component displays the form field for the account page, for password, name and email address
 import React from 'react';
 import { View, Text, TextInput, StyleSheet } from 'react-native';
 import { FormFieldProps } from '../../../data/interfaces';
 
 export const FormField: React.FC<FormFieldProps> = ({
+    // Props
     label,
     value,
     onChangeText,
@@ -13,6 +15,7 @@ export const FormField: React.FC<FormFieldProps> = ({
     editable = true
 }) => {
     return (
+        // Form field container
         <View style={styles.infoContainer}>
             <Text style={styles.label}>{label}</Text>
             <TextInput

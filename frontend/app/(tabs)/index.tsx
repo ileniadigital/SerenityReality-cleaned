@@ -1,3 +1,4 @@
+// This page is the home page with the Mood Rating and the list of AR scenes
 import { Text, View, StyleSheet, FlatList } from "react-native";
 import MoodRating from "../components/Home/MoodRating";
 import Scene from "../components/Home/Scene/Scene";
@@ -7,6 +8,7 @@ export default function Index() {
   return (
     <View style={styles.container} >
       <MoodRating />
+      {/* List of AR scenes */}
       <FlatList
         data={scenes}
         renderItem={({ item }) => <Scene title={item.title} description={item.description} packageName={item.packageName} />}

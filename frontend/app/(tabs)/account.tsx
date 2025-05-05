@@ -1,3 +1,4 @@
+// This page displays the account and handles authentication, log in, sign up and account delettion
 import React from 'react';
 import { ScrollView, Text, StyleSheet, View } from 'react-native';
 import { Link } from 'expo-router';

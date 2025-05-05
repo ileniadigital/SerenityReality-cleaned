@@ -1,3 +1,5 @@
+// UserContext to handle user authentication and profile data
+// This context will be used to provide user data and authentication status throughout the app
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import { subscribeToAuthChanges } from '../services/auth';
 import { UserProfile } from '../data/interfaces';
@@ -39,6 +41,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
     };
 
     return (
+        // Provide the context value to children components
         <UserContext.Provider value={contextValue}>
             {children}
         </UserContext.Provider>

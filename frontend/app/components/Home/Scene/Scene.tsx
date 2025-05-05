@@ -1,3 +1,4 @@
+// Component to display a scene with a play button and description
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import PlayButton from './PlayButton';
@@ -19,11 +20,14 @@ export default function Scene({ title, description, packageName }: { title: stri
 
     return (
         <View style={styles.container}>
+            {/* Play button to trigger the scene */}
             <PlayButton setModalVisible={setModalVisible} />
+            {/* Title and description */}
             <TouchableOpacity style={styles.textContainer} onPress={() => setModalVisible(true)}>
                 <Text style={styles.title}>{title}</Text>
                 <Text style={styles.description}>{description}</Text>
             </TouchableOpacity>
+            {/* Anixety Rating Pop up visible only after clicking */}
             <AnxietyRatingPopUp modalVisible={modalVisible} setModalVisible={setModalVisible} packageName={packageName} />
         </View>
     );

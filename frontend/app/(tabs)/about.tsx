@@ -1,3 +1,4 @@
+// This is the page for the About screen that includes the disclaimer
 import { Text, View, StyleSheet, ScrollView } from 'react-native';
 
 export default function AboutScreen() {

@@ -1,3 +1,4 @@
+// This is the settings page for the notifications (currently not used) and the dark mode toggle (not implemented)
 import React from 'react';
 import { View, Text, StyleSheet, Switch, ScrollView } from 'react-native';
 import { ActionButton } from '../components/Account/ActionButton';

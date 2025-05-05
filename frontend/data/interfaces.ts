@@ -1,3 +1,6 @@
+// Props for the authentication screens and components
+// This file contains the type definitions for the authentication screens and components
+
 import { ReactNode } from 'react';
 // Sign up props
 export interface SignUpProps {

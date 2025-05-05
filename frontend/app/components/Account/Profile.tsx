@@ -1,3 +1,4 @@
+// This displays the profile component using the FormField and ActionButton components
 import React from 'react';
 import { StyleSheet, ScrollView } from 'react-native';
 import { FormField } from './FormField';
@@ -5,6 +6,7 @@ import { ActionButton } from './ActionButton';
 import { ProfileProps } from '../../../data/interfaces';
 
 export const Profile: React.FC<ProfileProps> = ({
+    // Props
     userData,
     isLoading,
     onInputChange,
@@ -13,13 +15,16 @@ export const Profile: React.FC<ProfileProps> = ({
     onDeleteAccount,
 }) => {
     return (
+        // Scrollable view for the profile form
         <ScrollView contentContainerStyle={styles.scrollContainer}>
+            {/* Name */}
             <FormField
                 label="Name"
                 value={userData.name}
                 onChangeText={(text) => onInputChange('name', text)}
                 editable={!isLoading}
             />
+            {/* Email */}
             <FormField
                 label="Email"
                 value={userData.email}
@@ -28,6 +33,7 @@ export const Profile: React.FC<ProfileProps> = ({
                 autoCapitalize="none"
                 editable={!isLoading}
             />
+            {/* Password */}
             <FormField
                 label="Password"
                 value={userData.password}
@@ -35,17 +41,20 @@ export const Profile: React.FC<ProfileProps> = ({
                 secureTextEntry
                 editable={!isLoading}
             />
+            {/* Update profile button */}
             <ActionButton
                 title="Update Profile"
                 onPress={onUpdateProfile}
                 disabled={isLoading}
             />
+            {/* Sign out button */}
             <ActionButton
                 title="Sign Out"
                 onPress={onSignOut}
                 disabled={isLoading}
                 variant="signOut"
             />
+            {/* Delete account button */}
             <ActionButton
                 title="Delete Account"
                 onPress={onDeleteAccount}
