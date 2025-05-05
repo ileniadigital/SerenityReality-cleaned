@@ -1,3 +1,5 @@
+// Foam animator to manage foam
+// NOT IMPLEMENTED for the current version
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]

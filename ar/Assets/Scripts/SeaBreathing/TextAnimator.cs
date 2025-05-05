@@ -1,13 +1,15 @@
+// TextAnimator animates the text in the Sea Breathing Scene
+//
+// It must be assigned to a TMP_Text component in the scene
 using UnityEngine;
 using TMPro;
 using System.Collections;
 
 public class TextAnimator : MonoBehaviour
 {
-    public TMP_Text targetText;
-    public float fadeDuration = 0.5f;
-
-    private Coroutine fadeRoutine;
+    public TMP_Text targetText; // TextMeshPro component to animate
+    public float fadeDuration = 0.5f; // Duration of fade animation
+    private Coroutine fadeRoutine; // Current fade routine
 
     // Set text component if null
     void Awake()

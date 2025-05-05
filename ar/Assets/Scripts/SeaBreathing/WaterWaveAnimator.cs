@@ -1,3 +1,6 @@
+// Controls the water wave animation and breathing exercise text
+//
+// This script is attached to the water GameObject in the scene
 using UnityEngine;
 using TMPro;
 using System;
@@ -7,33 +10,36 @@ public class WaterWaveAnimator : MonoBehaviour, IBreathingController
     [Header("Wave Movement")]
     public float inhaleDistance = 1f;  // Moves the water forward
     public float exhaleDistance = 1f;  // Moves the water backward
-    public float moveSpeed = 1f;
+    public float moveSpeed = 1f; // Speed of the water movement
 
     [Header("Breathing Timings (seconds)")]
-    public float inhaleDuration = 4f;
-    public float holdDuration = 7f;
-    public float exhaleDuration = 8f;
+    public float inhaleDuration = 4f; // Time to inhale
+    public float holdDuration = 7f; // Time to hold breath
+    public float exhaleDuration = 8f; // Time to exhale
 
     [Header("Guiding text")]
-    public TextMeshProUGUI instructionText;
-    private string currentDisplayedText = "";
-    private string currentPhaseLabel = "";
-    private string lastCountdown = "";
+    public TextMeshProUGUI instructionText; // TextMeshProUGUI component to show breathing instructions
+    private string currentDisplayedText = ""; // Text currently displayed
+    private string currentPhaseLabel = ""; // Current phase label (Inhale, Hold, Exhale)
+    private string lastCountdown = ""; // Last countdown text displayed
 
-    private Vector3 startPosition;
-    private float timer;
-    private int phase = 0;
-    private Boolean isPaused = false;
-    public TextAnimator textAnimator;
+    private Vector3 startPosition; // Initial position of the water GameObject
+    private float timer; // Timer to track the duration of each phase
+    private int phase = 0; // Current phase of the breathing exercise (0: Inhale, 1: Hold, 2: Exhale)
+    private Boolean isPaused = false; // Flag to check if the breathing exercise is paused
+    public TextAnimator textAnimator; // TextAnimator component to animate the text
 
     void Start()
+    // Initialise start position of the water
     {
         startPosition = transform.position;
-        if (instructionText == null) {
+        if (instructionText == null)
+        {
             instructionText = GameObject.FindObjectOfType<TextMeshProUGUI>();
         }
-        if (textAnimator == null) { 
-            textAnimator= instructionText.GetComponent<TextAnimator>();
+        if (textAnimator == null)
+        {
+            textAnimator = instructionText.GetComponent<TextAnimator>();
         }
         BreathingExercise();
     }
@@ -45,7 +51,8 @@ public class WaterWaveAnimator : MonoBehaviour, IBreathingController
     }
 
     // Resume breathing when pop up is dismissed
-    public void ResumeBreathing() {
+    public void ResumeBreathing()
+    {
         isPaused = false;
     }
 
@@ -86,7 +93,7 @@ public class WaterWaveAnimator : MonoBehaviour, IBreathingController
                     timer = 0f;
                     phase = 0;
                     // Communicate breathing cycle is finished to show prompt if 2 minutes have passed
-                    BreathingManager.Instance?.NotifyExhaleComplete(); 
+                    BreathingManager.Instance?.NotifyExhaleComplete();
                 }
                 break;
         }
@@ -141,10 +148,11 @@ public class WaterWaveAnimator : MonoBehaviour, IBreathingController
         else
         {
             // Update countdown only
-            if (lastCountdown != countdownText) { 
+            if (lastCountdown != countdownText)
+            {
                 lastCountdown = countdownText;
                 // Set text directly
-                instructionText.text= $"{currentPhaseLabel}\n{lastCountdown}";
+                instructionText.text = $"{currentPhaseLabel}\n{lastCountdown}";
             }
         }
     }
