@@ -1,3 +1,6 @@
+// Handles the colour picker functionaility
+//
+// It must be attached to the ColourPicker prefab in the scene
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,19 +9,20 @@ using TMPro;
 
 public class ColourPickerControl : MonoBehaviour
 {
-    public float currentH, currentS, currentV;
-    [SerializeField] private RawImage hImage, sImage, previewImage;
-    [SerializeField] private Slider slider;
-    [SerializeField] private Button confirmButton;
+    public float currentH, currentS, currentV; // Current HSV values
+    [SerializeField] private RawImage hImage, sImage, previewImage; // RawImage components for hue, saturation, and preview images
+    [SerializeField] private Slider slider; // Slider for hue selection
+    [SerializeField] private Button confirmButton; // Button to confirm the selected colour
 
-    private Texture2D hTexture, sTexture, previewTexture;
+    private Texture2D hTexture, sTexture, previewTexture; // Textures for hue, saturation, and preview images
 
-    [SerializeField] MeshRenderer changeColour;
+    [SerializeField] MeshRenderer changeColour; // MeshRenderer to change the colour of the object
 
-    private ExperienceManager experienceManager;
-    private MeshRenderer targetRenderer;
+    private ExperienceManager experienceManager; // Reference to the ExperienceManager script
+    private MeshRenderer targetRenderer; // MeshRenderer of the target object to change colour
 
     private void Start()
+    // Initialise the panel
     {
         //ToggleColourPicker(false);
         experienceManager = FindObjectOfType<ExperienceManager>();
@@ -28,19 +32,22 @@ public class ColourPickerControl : MonoBehaviour
 
         UpdatePreview();
 
-        if (confirmButton != null) {
+        if (confirmButton != null)
+        {
             confirmButton.onClick.AddListener(ConfirmColour);
         }
     }
 
     private void CreateHueImage()
+    // Create the hue image texture
     {
         hTexture = new Texture2D(1, 16);
         hTexture.wrapMode = TextureWrapMode.Clamp;
         hTexture.name = "Hue Texture";
 
-        for (int i = 0; i < hTexture.height; i++) {
-            hTexture.SetPixel(0, i, Color.HSVToRGB( (float) i / hTexture.height, 1, 0.05f));
+        for (int i = 0; i < hTexture.height; i++)
+        {
+            hTexture.SetPixel(0, i, Color.HSVToRGB((float)i / hTexture.height, 1, 0.05f));
         }
 
         hTexture.Apply();
@@ -50,6 +57,7 @@ public class ColourPickerControl : MonoBehaviour
     }
 
     private void CreateSatImage()
+    // Create the saturation image texture
     {
         sTexture = new Texture2D(16, 16);
         sTexture.wrapMode = TextureWrapMode.Clamp;
@@ -57,7 +65,8 @@ public class ColourPickerControl : MonoBehaviour
 
         for (int y = 0; y < sTexture.height; y++)
         {
-            for (int x = 0; x < sTexture.width; x++) {
+            for (int x = 0; x < sTexture.width; x++)
+            {
                 sTexture.SetPixel(x, y, Color.HSVToRGB(currentH, (float)x / sTexture.width, (float)y / sTexture.height));
             }
         }
@@ -70,6 +79,7 @@ public class ColourPickerControl : MonoBehaviour
     }
 
     private void CreatePreviewImage()
+    // Create the preview image texture
     {
         previewTexture = new Texture2D(1, 16);
         previewTexture.wrapMode = TextureWrapMode.Clamp;
@@ -77,7 +87,8 @@ public class ColourPickerControl : MonoBehaviour
 
         Color currentColour = Color.HSVToRGB(currentH, currentS, currentV);
 
-        for (int i = 0; i < previewTexture.height; i++) {
+        for (int i = 0; i < previewTexture.height; i++)
+        {
             previewTexture.SetPixel(0, i, currentColour);
         }
 
@@ -86,16 +97,18 @@ public class ColourPickerControl : MonoBehaviour
     }
 
     private void UpdatePreview()
+    // Update the preview image with the current HSV values
     {
         Color currentColour = Color.HSVToRGB(currentH, currentS, currentV);
-        for (int i = 0; i < previewTexture.height; i++) {
+        for (int i = 0; i < previewTexture.height; i++)
+        {
             previewTexture.SetPixel(0, i, currentColour);
         }
 
         previewTexture.Apply();
         //changeColour.material.SetColor("_BaseColor", currentColour);
         //changeColour.GetComponent<MeshRenderer>().material.color = currentColour;
-        if (experienceManager != null && experienceManager.createdObject!= null)
+        if (experienceManager != null && experienceManager.createdObject != null)
         {
             targetRenderer = experienceManager.createdObject.GetComponent<MeshRenderer>();
             if (targetRenderer != null)
@@ -106,6 +119,7 @@ public class ColourPickerControl : MonoBehaviour
     }
 
     public void SetSV(float s, float v)
+    // Set the saturation and value based on the slider position
     {
         currentS = s;
         currentV = v;
@@ -113,11 +127,14 @@ public class ColourPickerControl : MonoBehaviour
     }
 
     public void UpdateSV()
+    // Update saturation value based on selection
     {
         currentH = slider.value;
-        for (int y = 0; y < sTexture.height; y++) {
-            for (int x = 0; x < sTexture.width; x++) {
-                sTexture.SetPixel(x, y, Color.HSVToRGB(currentH, (float)x / sTexture.width, (float) y / sTexture.height));
+        for (int y = 0; y < sTexture.height; y++)
+        {
+            for (int x = 0; x < sTexture.width; x++)
+            {
+                sTexture.SetPixel(x, y, Color.HSVToRGB(currentH, (float)x / sTexture.width, (float)y / sTexture.height));
             }
         }
         sTexture.Apply();
@@ -125,11 +142,13 @@ public class ColourPickerControl : MonoBehaviour
     }
 
     public void ToggleColourPicker(bool show)
+    // Initialise colour picker UI
     {
         gameObject.SetActive(show);
     }
 
     private void ConfirmColour()
+    // Confirm selected colour and apply it to the object
     {
         if (experienceManager != null && experienceManager.createdObject != null)
         {

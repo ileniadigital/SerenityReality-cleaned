@@ -1,29 +1,34 @@
-﻿using System.Collections;
+﻿// Handles the Breathing exercise visualisation
+//
+// It must be attached to the BreathingExercise prefab in the scene
+using System.Collections;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
 public class BreathingExercise : MonoBehaviour
 {
-    [SerializeField] private Image breathingCircle;
-    [SerializeField] private TextMeshProUGUI breathText;
-    [SerializeField] private float inhaleTime = 5f;
-    [SerializeField] private float holdTime = 5f;
-    [SerializeField] private float exhaleTime = 5f;
-    [SerializeField] private Vector3 minScale = new Vector3(1f, 1f, 1f);
-    [SerializeField] private Vector3 maxScale = new Vector3(3f, 3f, 3f);
+    [SerializeField] private Image breathingCircle; // The image that represents the breathing circle
+    [SerializeField] private TextMeshProUGUI breathText; // The text that displays the current breathing phase and time left
+    [SerializeField] private float inhaleTime = 5f; // The time for inhaling
+    [SerializeField] private float holdTime = 5f; // The time for holding the breath
+    [SerializeField] private float exhaleTime = 5f; // The time for exhaling
+    [SerializeField] private Vector3 minScale = new Vector3(1f, 1f, 1f); // The minimum size of the breathing circle
+    [SerializeField] private Vector3 maxScale = new Vector3(3f, 3f, 3f); // The maximum size of the breathing circle
 
-    private bool breathingStarted = false;
-    private bool isBreathing = false;
-    private Coroutine breathingLoop;
+    private bool breathingStarted = false; // Flag to check if breathing has started
+    private bool isBreathing = false; // Flag to check if breathing is in progress
+    private Coroutine breathingLoop; // Coroutine for breathing loop
 
     private void Start()
+    // Initialise the elements
     {
         breathingCircle.gameObject.SetActive(false);
         breathText.gameObject.SetActive(false);
     }
 
     public void StartBreathing()
+    // Start the breathing exercise
     {
         if (!breathingStarted)
         {
@@ -55,7 +60,7 @@ public class BreathingExercise : MonoBehaviour
     private IEnumerator BreathingRoutine()
     {
         int breaths = 0; // Count breaths
-        while (breaths<3)
+        while (breaths < 3)
         {
             yield return StartCoroutine(BreathingCycle());
             breaths++;

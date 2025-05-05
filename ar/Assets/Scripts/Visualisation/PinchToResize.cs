@@ -1,3 +1,5 @@
+// Used to pinch the element to resize it
+// NOT IMPLEMENTED YET
 using UnityEngine;
 using UnityEngine.XR;
 using System.Collections;
@@ -12,7 +14,7 @@ public class PinchToResize : MonoBehaviour
     private InputDevice leftController;
     private InputDevice rightController;
 
-    [SerializeField] private InstructionText instructionText; 
+    [SerializeField] private InstructionText instructionText;
     [SerializeField] private float animationDuration = 5f;  // Duration of the shrinking animation
 
     private void Start()

@@ -1,3 +1,5 @@
+// Handles loading the scene based on the intent passed from the Android activity
+// NOT IMPLEMENTED
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

@@ -1,24 +1,26 @@
+//  BuzzControl class handles buzzing animation of the object
+//
+// It must be attached to the object that controls the buzz speed
+
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 
-/*
- * BuzzControl class handles buzzing animation of the object
- */
 public class BuzzControl : MonoBehaviour
 {
-    [SerializeField] private Slider buzzSpeedSlider;
-    [SerializeField] private TextMeshProUGUI speedText;
-    [SerializeField] private InstructionText instructionText;
-    [SerializeField] private Button confirmButton;
-    [SerializeField] public GameObject buzzUI;
-    [SerializeField] private BreathingExercise breathingExercise;
+    [SerializeField] private Slider buzzSpeedSlider; // Slider to control the speed of the buzz
+    [SerializeField] private TextMeshProUGUI speedText; // Text to display the current speed of the buzz
+    [SerializeField] private InstructionText instructionText; // Instruction text to guide the user
+    [SerializeField] private Button confirmButton; // Button to confirm the buzz speed
+    [SerializeField] public GameObject buzzUI; // UI element to show the buzz speed control
+    [SerializeField] private BreathingExercise breathingExercise; // Breathing exercise object to be activated during the buzz
     //[SerializeField] private PinchToResize pinchToResize;
 
     private Buzz buzzObject;
     private bool isSecondBuzz = false;
     private void Start()
+    // Initialise the buzz control and set up the control panel
     {
         buzzUI.SetActive(false);
 
@@ -31,11 +33,13 @@ public class BuzzControl : MonoBehaviour
     }
 
     public void SetBuzzObject(GameObject newObject)
+    // Set the object to buzz and initialise the buzz component
     {
         buzzObject = newObject.GetComponent<Buzz>();
     }
 
     private void UpdateBuzzSpeed(float speed)
+    // Update the speed of the buzz based on the slider value
     {
         if (buzzObject != null)
         {
@@ -49,6 +53,7 @@ public class BuzzControl : MonoBehaviour
     }
 
     private void ConfirmBuzz()
+    // Confirm the buzz speed and start breathing exercise
     {
         buzzUI.SetActive(false);
 
@@ -77,6 +82,7 @@ public class BuzzControl : MonoBehaviour
 
 
     public void ShowBuzzUI()
+    // Show the UI panel to control the buzzing speed
     {
         buzzUI.SetActive(true);
         if (instructionText != null)

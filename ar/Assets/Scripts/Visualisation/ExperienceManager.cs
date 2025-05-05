@@ -1,3 +1,6 @@
+// Manages the AR experiences, including object placement and interaction
+//
+// It must be attached to the ExperienceManager prefab in the scene
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,22 +11,22 @@ using UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets;
 
 public class ExperienceManager : MonoBehaviour
 {
-    [SerializeField] private Button addButton;
-    [SerializeField] private Button confirmButton;
-    [SerializeField] private GameObject shapeMenu;
-    [SerializeField] private ARRaycastManager aRRaycastManager;
-    [SerializeField] private ARPlaneManager aRPlaneManager;
-    [SerializeField] private GameObject[] objectPrefab;
-    [SerializeField] private ColourPickerControl colourPicker;
+    [SerializeField] private Button addButton; // Button to add the object
+    [SerializeField] private Button confirmButton; // Button to confirm the shape selection
+    [SerializeField] private GameObject shapeMenu; // Menu for selecting the shape
+    [SerializeField] private ARRaycastManager aRRaycastManager; // Raycast manager for detecting AR planes
+    [SerializeField] private ARPlaneManager aRPlaneManager; // Plane manager for managing AR planes
+    [SerializeField] private GameObject[] objectPrefab; // Array of object prefabs to choose from
+    [SerializeField] private ColourPickerControl colourPicker; // Colour picker for selecting the object's colour
 
-    public GameObject createdObject;
-    private GameObject _currentPrefab;
-    private bool _canAddObject = false;
-    private bool _shapeConfirmed = false;
-    private GameObject _objectPrefabPreview;
-    private Vector3 _detectedPosition = new Vector3();
-    private Quaternion _detectedRotation = Quaternion.identity;
-    private ARTrackable _currentTrackable = null;
+    public GameObject createdObject; // The created object
+    private GameObject _currentPrefab; // The currently selected prefab
+    private bool _canAddObject = false; // Flag to check if the object can be added
+    private bool _shapeConfirmed = false; // Flag to check if the shape is confirmed
+    private GameObject _objectPrefabPreview; // Preview of the object prefab
+    private Vector3 _detectedPosition = new Vector3(); // Detected position for the object placement
+    private Quaternion _detectedRotation = Quaternion.identity; // Detected rotation for the object placement
+    private ARTrackable _currentTrackable = null; // Current trackable object
 
     private void Start()
     {
@@ -54,6 +57,7 @@ public class ExperienceManager : MonoBehaviour
     }
 
     private void GetRaycastHitTransform()
+    // Perform a raycast to detect AR planes and update the position and rotation of the object preview
     {
         var hits = new List<ARRaycastHit>();
         var middleScreen = new Vector2(Screen.width / 2, Screen.height / 2);
@@ -74,12 +78,14 @@ public class ExperienceManager : MonoBehaviour
     }
 
     private IEnumerator ShowShapeMenuWithDelay(float delay)
+    // Show the shape menu after a delay
     {
         yield return new WaitForSeconds(delay);
         confirmButton.gameObject.SetActive(true);
     }
 
     public void ChangeSelectedObject(int index)
+    // Change the selected object based on the index
     {
         if (index < 0 || index >= objectPrefab.Length) return;
 
@@ -99,6 +105,7 @@ public class ExperienceManager : MonoBehaviour
     }
 
     public void ConfirmShapeSelection()
+    // Confirm the shape selection and enable the add button
     {
         if (_currentPrefab == null) return;
 
@@ -113,6 +120,7 @@ public class ExperienceManager : MonoBehaviour
     }
 
     public void SpawnObject()
+    // Spawn the object at the detected position and rotation
     {
         if (!_shapeConfirmed || _currentPrefab == null) return;
 
@@ -147,6 +155,7 @@ public class ExperienceManager : MonoBehaviour
     }
 
     private void OnDestroy()
+    // Unsubscribe from event when object is destroyed
     {
         if (_canAddObject)
         {
@@ -155,16 +164,20 @@ public class ExperienceManager : MonoBehaviour
     }
 
     public void SetCanAddObject(bool canAddObject)
+    // Set the flag to check if the object can be added
     {
         _canAddObject = canAddObject;
     }
 
     private void DisablePlaneVisualisation()
+    // Disable plane visualisation after the object is placed
     {
         aRPlaneManager.enabled = false;
-        foreach (var plane in aRPlaneManager.trackables) {
+        foreach (var plane in aRPlaneManager.trackables)
+        {
             var planeVisualiser = plane.GetComponent<ARFeatheredPlaneMeshVisualizerCompanion>();
-            if (planeVisualiser != null) {
+            if (planeVisualiser != null)
+            {
                 planeVisualiser.visualizeSurfaces = false;
             }
         }

@@ -1,3 +1,6 @@
+// InstructionText handles the animation and changes in text of the Visualisation scene
+//
+// It must be attached to the GameObject that contains the TextMeshProUGUI component
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,13 +10,14 @@ using UnityEngine.XR.ARFoundation;
 
 public class InstructionText : MonoBehaviour
 {
-    public TextMeshProUGUI instructionText;
-    private ARPlaneManager planeManager;
-    private bool objectPreviewLoaded = false;
-    [SerializeField] private ColourPickerControl colourPicker;
-    [SerializeField] private BuzzControl buzzControl;
+    public TextMeshProUGUI instructionText; // Reference to the TextMeshProUGUI component
+    private ARPlaneManager planeManager; // Reference to the ARPlaneManager component
+    private bool objectPreviewLoaded = false; // Flag to check if the object preview has been loaded
+    [SerializeField] private ColourPickerControl colourPicker; // Reference to the ColourPickerControl component
+    [SerializeField] private BuzzControl buzzControl; // Reference to the BuzzControl component
 
     void Start()
+    // Set the initial text and initialise all components
     {
         instructionText.text = "Scan the room to detect available surfaces";
         planeManager = FindObjectOfType<ARPlaneManager>();
@@ -54,11 +58,13 @@ public class InstructionText : MonoBehaviour
     }
 
     public void ShowBreathingInstruction()
+    // Show the breathing instruction text
     {
         instructionText.text = "Take 3 deep breaths";
     }
 
     public void SetInstructionText(string text)
+    // Set the instruction text to the specified string
     {
         instructionText.text = text;
     }

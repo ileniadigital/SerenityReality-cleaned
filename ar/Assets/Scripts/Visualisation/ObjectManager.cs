@@ -1,3 +1,6 @@
+// Handles selecting the object in the Visualisation scene before placing it
+//
+// It must be attached to the object manager in the AR world
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.UI;
@@ -6,11 +9,11 @@ using System.Collections.Generic;
 
 public class objectManager : MonoBehaviour
 {
-    public GameObject[] objectPrefabs; 
-    public GameObject selectionMenu;
-    private GameObject selectedPrefab;
-    private GameObject spawnedObject;
-    private ARRaycastManager raycastManager;
+    public GameObject[] objectPrefabs; // Array of object prefabs to select from
+    public GameObject selectionMenu; // The menu to select the object
+    private GameObject selectedPrefab; // The currently selected prefab
+    private GameObject spawnedObject; // The currently spawned object
+    private ARRaycastManager raycastManager; // The AR Raycast Manager to detect planes
 
     void Start()
     {
@@ -26,12 +29,15 @@ public class objectManager : MonoBehaviour
     }
 
     public void SelectObject(int index)
+    // Select object and assign it to the selectedPrefab variable
     {
         selectedPrefab = objectPrefabs[index];
         //selectionMenu.SetActive(false); // Hide menu after selection
     }
 
     void Update()
+    // Update is called once per frame
+    // Check for touch input and place the selected object in the AR world
     {
         if (selectedPrefab == null || raycastManager == null) return;
 
