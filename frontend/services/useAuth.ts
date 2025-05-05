@@ -1,6 +1,24 @@
+/**
+ * Hook for authentication and account management.
+ * It integrates with UserContext and
+ * provides state management, input handling, sign-up, login, account updates, reauthentication, and account deletion.
+ *
+ * The hook also manages navigation between different authentication modes and
+ * provides methods for rendering reauthentication and delete confirmation screens.
+ *
+ *  returns {Object} An object containing:
+ * - State variables (`authMode`, `isLoading`, `userData`, `currentPassword`, `confirmationPassword`)
+ * - State setters (`setAuthMode`, `setCurrentPassword`, `setConfirmationPassword`)
+ * - Input handlers (`handleInputChange`)
+ * - Authentication actions (`handleSignUp`, `handleLogin`, `handleUpdateAccount`, `handleReauthenticate`, `handleDeleteAccount`, `confirmDeleteAccount`, `handleSignOut`)
+ * - Screen helpers (`renderReauthenticationScreen`, `renderDeleteConfirmationScreen`)
+ * - Navigation helpers (`navigateToWelcome`, `navigateToSignUp`, `navigateToLogin`, `navigateToProfile`)W
+ */
+
 import { useState, useEffect } from 'react';
 import { Alert } from 'react-native';
 import { useUser} from '../contexts/UserContext';
+// Import authentication functions from the auth service
 import {
   signUpWithEmail,
   signInWithEmail,
@@ -20,6 +38,7 @@ export enum AuthMode {
 }
 
 export const useAccount = () => {
+  // Get user context and state management functions
   const { updateUserContext, user: contextUser, isLoggedIn: contextIsLoggedIn } = useUser();
   const [authMode, setAuthMode] = useState<AuthMode>(AuthMode.WELCOME);
   const [isLoading, setIsLoading] = useState(false);

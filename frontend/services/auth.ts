@@ -1,3 +1,24 @@
+/**
+ * Provides authentication services using Firebase.
+ * Includes methods for user sign-up, sign-in, reauthentication, profile updates,
+ * password reset, account deletion, and authentication state management.
+ *
+ * Functions:
+ * - `signUpWithEmail`: Registers a new user with email, password, and optional display name.
+ * - `signInWithEmail`: Logs in an existing user with email and password.
+ * - `reauthenticateWithPassword`: Reauthenticates the current user using their password.
+ * - `updateUserProfile`: Updates the current user's profile, including name, email, and password.
+ * - `signOut`: Logs out the current user.
+ * - `getCurrentUser`: Retrieves the currently logged-in user's profile information.
+ * - `subscribeToAuthChanges`: Sets up a listener for authentication state changes.
+ * - `isUserLoggedIn`: Checks if a user is currently logged in.
+ * - `sendPasswordResetEmail`: Sends a password reset email to the specified address.
+ * - `deleteAccount`: Deletes the currently logged-in user's account.
+ *
+ * Each function returns a Promise or value indicating the success or failure of the operation,
+ * with the user data, or an error message if something fails.
+ */
+
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { UserProfile, AuthResult, ProfileUpdateData } from '../data/interfaces';
 
@@ -123,14 +144,13 @@ export const updateUserProfile = async (
 ): Promise<AuthResult> => {
   try {
     const user = auth().currentUser;
-
+    // Check if user is logged in
     if (!user) {
       return {
         success: false,
         message: 'You must be logged in to update your profile'
       };
     }
-
     const { name, email, password } = updateData;
     let profileUpdated = false;
     let requiresReauthentication = false;
